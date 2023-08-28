@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :meal_plans, except: [:edit, :update] do
-    resources :meal_plan_recipes, only [:new, :create]
+    resources :meal_plan_recipes, only: [:new, :create]
   end
 end
