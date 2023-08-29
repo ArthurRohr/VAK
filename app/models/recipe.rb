@@ -3,6 +3,6 @@ class Recipe < ApplicationRecord
   has_many :users, through: :bookmarks
   has_many :meal_plans, through: :meal_plan_recipes
 
-  has_many_attached :photos
+  has_one_attached :pictures
   attribute :ai_created, default: false
 end

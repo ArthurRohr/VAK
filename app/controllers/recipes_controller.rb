@@ -15,7 +15,8 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @user = current_user
+    @recipe.user = current_user
+
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
@@ -23,12 +24,13 @@ class RecipesController < ApplicationController
     end
   end
 
-  def AIRecipe
-    @response = OpenaiService.new('Recipe with').call
+  def ai_recipe
+    @response = OpenaiService.new('Recipe with chicken, lemon').call
   end
 
   private
+
   def recipe_params
-    params.require(:recipe).permit(:name,:ingredients, :instructions, :time, :cuisine, :diet, :servings)
+    params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :servings, :pictures)
   end
 end

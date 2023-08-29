@@ -1,4 +1,7 @@
-<% @recipe.each do |recipe| %>
+<ul>
+<% @recipes.each do |recipe| %>
 <li><%= recipe.name %></li>
 <li><%= recipe.ai_created %></li>
+<li><img src="<%= recipe.picture %>" alt=""></li>
 <% end %>
+</ul>
