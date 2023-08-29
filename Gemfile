@@ -80,3 +80,4 @@ end
 gem "devise"
 gem "cloudinary"
 gem "ruby-openai"
+gem "faker"

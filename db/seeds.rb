@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+require 'open-uri'
+
+Recipe.destroy_all
+
+puts "Generating recipes..."
+
+# Array of possible cuisines and diets
+cuisines = ["Italian", "Indian", "Mexican", "Japanese", "Chinese", "French", "Thai", "Mediterranean", "American", "Greek"]
+diets = ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free", "Keto", "Paleo"]
+
+# Create 20 Faker-generated recipes
+20.times do
+  Recipe.create(
+    name: Faker::Food.dish,
+    ingredients: Faker::Food.ingredient,
+    instructions: Faker::Food.description,
+    time: "#{rand(10..120)} minutes",
+    cuisine: cuisines.sample, # Select a random cuisine from the array
+    diet: diets.sample,       # Select a random diet from the array
+    ai_created: Faker::Boolean.boolean,
+    servings: "#{rand(1..8)}",
+    user_id: rand(1..10),      # Assuming you have 10 users
+    picture: "https://source.unsplash.com/featured/?food&#{rand(1..2000)}"
+  )
+end
+
+puts "20 recipes added"
