@@ -4,4 +4,5 @@ class Recipe < ApplicationRecord
   has_many :meal_plans, through: :meal_plan_recipes
 
   has_many_attached :photos
+  attribute :ai_created, default: false
 end
