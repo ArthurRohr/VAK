@@ -28,6 +28,7 @@ diets = ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free", "Keto", "Paleo"
     ai_created: Faker::Boolean.boolean,
     servings: "#{rand(1..8)}",
     user_id: 1,
+  # Assuming you have 10 users
     picture: "https://source.unsplash.com/featured/?food&#{rand(1..2000)}"
   )
 end
