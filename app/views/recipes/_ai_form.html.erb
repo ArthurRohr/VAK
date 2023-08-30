@@ -1,0 +1,12 @@
+
+<div class="container my-5 forms">
+ <h2>Generate Recipe</h2>
+  <%= simple_form_for :recipes, url:  ai_recipe_path, method: :get do |f| %>
+    <%= f.input :ingredients %>
+    <%= f.input :time %>
+    <%= f.input :cuisine %>
+    <%= f.input :diet %>
+    <%= f.input :servings %>
+    <%= f.submit "Submit", class: "button-form" %>
+  <% end %>
+</div>

@@ -1,0 +1,2 @@
+class AiRecipesController < ApplicationController
+end
