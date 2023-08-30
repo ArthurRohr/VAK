@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks, only: :destroy
+  get '/ai_recipe', to: 'recipes#ai_recipe'
 end
