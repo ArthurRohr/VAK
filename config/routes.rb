@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: :destroy
   get '/ai_recipe', to: 'recipes#ai_recipe'
+  get '/dashboard', to: 'dashboard#dashboard'
 end

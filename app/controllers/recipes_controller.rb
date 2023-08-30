@@ -28,7 +28,6 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-    raise
     @response = JSON.parse(OpenaiService.new('Recipe with chicken,noodles,brokkoli and its nutrition in the following json format
                                                           {
                                                             "recipe": {
@@ -37,7 +36,7 @@ class RecipesController < ApplicationController
                                                               "instructions": [],
                                                               "cooking_time": "",
                                                               "servings": "",
-                                                              "nutrition": [:calorie,:total-fat,:saturated-fate,:sodium,:carbs,:fiber,:sugar,:protien,:cholestrol]
+                                                              "nutrition": [:calories,:total-fat,:saturated-fat,:sodium,:carbs,:fiber,:sugar,:protein,:cholesterol]
                                                             }
                                                           }').call)
 
@@ -47,7 +46,6 @@ class RecipesController < ApplicationController
     @cooking_time = @response["recipe"]["cooking_time"]
     @servings = @response["recipe"]["servings"]
     @nutrition = @response["recipe"]["nutrition"]
-
   end
 
   def ai_recipe_new

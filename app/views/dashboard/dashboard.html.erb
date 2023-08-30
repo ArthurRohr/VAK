@@ -1,0 +1,32 @@
+<div class="container my-5 dashboard">
+  <div class="container d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <p style="font-size: 2rem;"><strong>Welcome</strong></p>
+    </div>
+    <h2>My recipes</h2>
+    <%= link_to "Add a recipe", new_recipe_path, class: "btn rounded-3 button-form mb-4" %>
+  </div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <% @recipes.each do |recipe|  %>
+              <% picture = recipe.pictures.first %>
+              <a href= <%= recipe_path(recipe) %> >
+                <%= cl_image_tag picture.key %>
+              </a>
+              <h5><%= recipe.name  %></h5>
+              <% end %>
+
+  </div>
+
+  <div class="container d-flex justify-content-center mb-4 mt-5">
+    <h2>My Meal Plans</h2>
+  </div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <% @meal_plans.each do |meal_plan|  %>
+              <% picture = meal_plan.recipe.pictures.first %>
+              <%= cl_image_tag picture.key %>
+    <% end %>
+  </div>
+
+</div>
