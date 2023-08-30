@@ -34,7 +34,8 @@ class MealPlansController < ApplicationController
       }
     })
     @data = JSON.parse(response.body)
-    week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    week = ["monday", "tuesday"]
+    @recipies = []
     week.each do |day|
       @data["week"][day].each do |meals|
         meals[1].each do |meal|
@@ -46,7 +47,7 @@ class MealPlansController < ApplicationController
                 includeNutrition: true
               }
             })
-            @recipe_data = JSON.parse(recipe_response.body)
+            @recipies.push(JSON.parse(recipe_response.body))
           end
         end
       end
