@@ -1,7 +1,35 @@
-<ul>
-<% @recipes.each do |recipe| %>
-<li><%= recipe.name %></li>
-<li><%= recipe.ai_created %></li>
-<li><img src="<%= recipe.picture %>" alt=""></li>
-<% end %>
-</ul>
+
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+  <div class="container my-5 grid-container">
+    <% @recipes.each do |recipe| %>
+      <div class="card card-container">
+        <img src=<%= recipe.picture %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.name %></h5>
+          <p class="card-text"><%= recipe.instructions %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Time: <%= recipe.time %> minutes</li>
+          <li class="list-group-item">Cuisine: <%= recipe.cuisine %></li>
+          <li class="list-group-item">Diet: <%= recipe.diet %></li>
+          <li class="list-group-item">Servings: <%= recipe.servings %></li>
+          <% if recipe.ai_created %>
+            <li class="list-group-item">AI Generated</li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>

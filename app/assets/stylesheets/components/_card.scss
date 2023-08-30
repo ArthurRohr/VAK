@@ -1,0 +1,12 @@
+card-container {
+  overflow: hidden; /* Hide any overflow of the image */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+  transition: 0.8s;
+
+  img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 100%; /* Make the image take the full height of the container */
+    opacity: 0.5;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+}
