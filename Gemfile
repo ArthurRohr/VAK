@@ -76,7 +76,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
+gem 'httparty'
 gem "devise"
 gem "cloudinary"
 gem "ruby-openai"
