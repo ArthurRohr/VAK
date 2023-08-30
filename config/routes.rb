@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :nutritional_values, only: :create
     resources :bookmarks, only: :create
+
   end
 
   resources :meal_plans, except: [:edit, :update] do

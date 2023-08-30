@@ -1,3 +1,29 @@
-<div>
-<li><%= @response %></li>
+<div class="container">
+    <h2>Title</h2>
+    <%= @title %>
+    <h2>Ingredients</h2>
+    <% @ingredients.each do | ingredient | %>
+        <li><%= ingredient %></li>
+    <% end %>
+
+    <h2>Instructions</h2>
+    <% @instructions.each do |instruction| %>
+    <li><%= instruction %></li>
+    <% end %>
+
+    <h2>Cooking Time</h2>
+    <li><%= @cooking_time %></li>
+    <h2>Servings</h2>
+    <li> <%= @servings %></li>
+
+    <h2>Nutritional Values</h2>
+    <p>Calories : <%= @nutrition["calorie"] %></p>
+    <p>Total Fat : <%= @nutrition["total-fat"] %></p>
+    <p>Saturated Fat : <%= @nutrition["saturated-fat"] %></p>
+    <p>Carbohydrate : <%= @nutrition["carbs"] %></p>
+    <p>Protien : <%= @nutrition["protein"] %></p>
+    <p>Sodium : <%= @nutrition["sodium"] %></p>
+    <p>Fiber : <%= @nutrition["fiber"] %></p>
+    <p>Sugar: <%= @nutrition["sugar"] %></p>
+    <p>Cholestrol : <%= @nutrition["cholesterol"] %></p>
 </div>

@@ -1,5 +1,6 @@
-class RecipesController < ApplicationController
+require 'json'
 
+class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
@@ -10,6 +11,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @ai = params[:ai]
     @recipe = Recipe.new
   end
 
@@ -25,7 +27,30 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-    @response = OpenaiService.new('Recipe with chicken, lemon').call
+    raise
+    @response = JSON.parse(OpenaiService.new('Recipe with chicken,noodles,brokkoli and its nutrition in the following json format
+                                                          {
+                                                            "recipe": {
+                                                              "title": "",
+                                                              "ingredients": [],
+                                                              "instructions": [],
+                                                              "cooking_time": "",
+                                                              "servings": "",
+                                                              "nutrition": [:calorie,:total-fat,:saturated-fate,:sodium,:carbs,:fiber,:sugar,:protien,:cholestrol]
+                                                            }
+                                                          }').call)
+
+    @title = @response["recipe"]["title"]
+    @ingredients = @response["recipe"]["ingredients"]
+    @instructions = @response["recipe"]["instructions"]
+    @cooking_time = @response["recipe"]["cooking_time"]
+    @servings = @response["recipe"]["servings"]
+    @nutrition = @response["recipe"]["nutrition"]
+
+  end
+
+  def ai_recipe_new
+    @recipe = Recipe.new
   end
 
   private
