@@ -20,7 +20,7 @@ diets = ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free", "Keto", "Paleo"
 20.times do
   Recipe.create(
     name: Faker::Food.dish,
-    ingredients: Faker::Food.ingredient,
+    ingredients: (1..rand(3..10)).map { Faker::Food.ingredient }.join(", "),
     instructions: Faker::Food.description,
     time: "#{rand(10..120)} minutes",
     cuisine: cuisines.sample, # Select a random cuisine from the array
