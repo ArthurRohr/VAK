@@ -1,3 +1,15 @@
+      <div class="container d-flex justify-content-center" height=50>
+
+    <%= simple_form_for :random, url: recipes_path, method: :get, class: "d-flex m-3" do |f| %>
+      <%= f.input :ingredients, required: false %>
+      <%= f.input :name, required: false %>
+      <%= f.input :cuisine, collection: Recipe::CUISINE, required: false %>
+      <%= f.input :time, required: false %>
+      <%= f.input :diet, collection: Recipe::DIET, required: false %>
+      <%= f.button :submit, "Search", class: "btn button-form" %>
+      <% end %>
+    </div>
+
   <div class="container my-5 grid-container">
     <% @recipes.each do |recipe| %>
       <div class="card card-container">
