@@ -1,8 +1,8 @@
 class RecipesController < ApplicationController
 
-
   def index
     @recipes = Recipe.all
+    @recipes = Recipe.search_everywhere(params[:query]) if params[:query].present?
   end
 
   def show
