@@ -8,4 +8,11 @@ class Recipe < ApplicationRecord
 
   CUISINE = ["Italian", "Indian", "Mexican", "Japanese", "Chinese", "French", "Thai", "Mediterranean", "American", "Greek"]
   DIET = ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free", "Keto", "Paleo"]
+
+  include PgSearch::Model
+  pg_search_scope :search_everywhere,
+  against: [ :name, :ingredients, :time, :cuisine, :diet ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
