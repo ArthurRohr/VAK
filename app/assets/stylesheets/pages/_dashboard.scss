@@ -1,0 +1,772 @@
+.dashboard {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.dashboard .div {
+  background-color: #f3f3f3;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.dashboard .nav-bar {
+  display: flex;
+  flex-direction: column;
+  width: 124px;
+  height: 1024px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+}
+
+.dashboard .menu {
+  display: inline-flex;
+  flex-direction: column;
+  height: 455px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.dashboard .div-2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.dashboard .vector {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.dashboard .calories {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #84bd00;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  white-space: nowrap;
+}
+
+.dashboard .img {
+  position: relative;
+  width: 20.75px;
+  height: 24px;
+}
+
+.dashboard .text-wrapper {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #7f7e7e;
+  font-size: 9px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  white-space: nowrap;
+}
+
+.dashboard .vector-2 {
+  position: relative;
+  width: 21px;
+  height: 24px;
+}
+
+.dashboard .calories-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #7f7e7e;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  white-space: nowrap;
+}
+
+.dashboard .vector-3 {
+  position: relative;
+  width: 18px;
+  height: 24px;
+}
+
+.dashboard .vector-4 {
+  position: relative;
+  width: 22.62px;
+  height: 24px;
+}
+
+.dashboard .vector-5 {
+  position: relative;
+  width: 22px;
+  height: 19px;
+}
+
+.dashboard .primary-btn {
+  display: inline-flex;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0px 12px;
+  position: absolute;
+  top: 40px;
+  left: 1111px;
+  background-color: #84bd00;
+  border-radius: 10px;
+}
+
+.dashboard .utensils-solid {
+  position: relative;
+  width: 13px;
+  height: 15px;
+}
+
+.dashboard .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: 21.6px;
+  white-space: nowrap;
+}
+
+.dashboard .btn {
+  width: 281px;
+  height: 118px;
+  top: 153px;
+  left: 485px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #333333;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: 21.6px;
+  white-space: nowrap;
+}
+
+.dashboard .frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: -1px;
+}
+
+.dashboard .utensils-solid-2 {
+  position: relative;
+  width: 21px;
+  height: 25px;
+}
+
+.dashboard .text-wrapper-4 {
+  color: #84bd00;
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 40.6px;
+  white-space: nowrap;
+}
+
+.dashboard .btn-2 {
+  width: 281px;
+  height: 118px;
+  top: 153px;
+  left: 798px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .calendar-regular {
+  position: relative;
+  width: 21.26px;
+  height: 24px;
+}
+
+.dashboard .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #fdc040;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 40.6px;
+  white-space: nowrap;
+}
+
+.dashboard .btn-3 {
+  width: 281px;
+  height: 118px;
+  top: 153px;
+  left: 1111px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .text-wrapper-6 {
+  color: #e87767;
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 40.6px;
+  white-space: nowrap;
+}
+
+.dashboard .btn-4 {
+  width: 594px;
+  height: 261px;
+  top: 725px;
+  left: 172px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .frame-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.dashboard .p {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Bold", Helvetica;
+  font-weight: 700;
+  color: #ed8b00;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15.2px;
+  white-space: nowrap;
+}
+
+.dashboard .span {
+  text-decoration: underline;
+}
+
+.dashboard .text-wrapper-7 {
+  font-family: "Poppins-Bold", Helvetica;
+  font-weight: 700;
+  color: #ed8b00;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15.2px;
+}
+
+.dashboard .text-wrapper-8 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #7f7e7e;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .frame-3 {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.dashboard .frame-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.dashboard .ingredient {
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.dashboard .lemon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background-color: #f8e5b2;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.dashboard .vector-6 {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 13px;
+  left: 13px;
+}
+
+.dashboard .details {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.dashboard .calories-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #333333;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17.8px;
+  white-space: nowrap;
+}
+
+.dashboard .leaf-solid {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background-color: #edf2b2;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.dashboard .vector-7 {
+  position: absolute;
+  width: 24px;
+  height: 21px;
+  top: 13px;
+  left: 11px;
+}
+
+.dashboard .drumstick-bite {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background-color: #fcd6c9;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.dashboard .vector-8 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 12px;
+  left: 12px;
+}
+
+.dashboard .btn-5 {
+  width: 281px;
+  height: 390px;
+  top: 303px;
+  left: 1111px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .overlap-group {
+  position: absolute;
+  width: 907px;
+  height: 390px;
+  top: 303px;
+  left: 172px;
+  border-radius: 10px;
+}
+
+.dashboard .btn-6 {
+  width: 907px;
+  height: 390px;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .graphic {
+  display: flex;
+  height: 269px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.dashboard .calories-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 6px 0px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.dashboard .calories-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Light", Helvetica;
+  font-weight: 300;
+  color: #7f7e7e;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .calories-6 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Light", Helvetica;
+  font-weight: 300;
+  color: #7f7e7e;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .lines {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.dashboard .line {
+  position: relative;
+  flex: 1;
+  width: 794px;
+  flex-grow: 1;
+  object-fit: cover;
+}
+
+.dashboard .frame-5 {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: -1px;
+}
+
+.dashboard .calories-7 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #7f7e7e;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .frame-6 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0px 36px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.dashboard .calories-wrapper {
+  position: absolute;
+  width: 115px;
+  height: 86px;
+  top: 225px;
+  left: 75px;
+  background-color: #f8e5b2;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.dashboard .calories-8 {
+  position: absolute;
+  top: 35px;
+  left: -14px;
+  transform: rotate(-90deg);
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #eaaa00;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .div-wrapper {
+  position: absolute;
+  width: 153px;
+  height: 86px;
+  top: 206px;
+  left: 344px;
+  background-color: #fcd6c9;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.dashboard .calories-9 {
+  position: absolute;
+  top: 35px;
+  left: -4px;
+  transform: rotate(-90deg);
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #f6784c;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .frame-7 {
+  position: absolute;
+  width: 38px;
+  height: 86px;
+  top: 263px;
+  left: 257px;
+  background-color: #edf2b2;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.dashboard .calories-10 {
+  position: absolute;
+  top: 34px;
+  left: -4px;
+  transform: rotate(-90deg);
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #c4d600;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .frame-8 {
+  position: absolute;
+  width: 38px;
+  height: 86px;
+  top: 263px;
+  left: 577px;
+  background-color: #edf2b2;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.dashboard .frame-9 {
+  position: absolute;
+  width: 153px;
+  height: 86px;
+  top: 206px;
+  left: 696px;
+  background-color: #fcd6c9;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.dashboard .calories-11 {
+  position: absolute;
+  top: 34px;
+  left: -5px;
+  transform: rotate(-90deg);
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #f6784c;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.dashboard .btn-7 {
+  width: 594px;
+  height: 261px;
+  top: 725px;
+  left: 798px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .ingredients {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-right: -4px;
+}
+
+.dashboard .column {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.dashboard .ingredient-2 {
+  width: 271px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.dashboard .text-wrapper-9 {
+  position: absolute;
+  top: 152px;
+  left: 172px;
+  font-family: "Poppins-Bold", Helvetica;
+  font-weight: 700;
+  color: #333333;
+  font-size: 38px;
+  letter-spacing: 0;
+  line-height: 48.3px;
+  white-space: nowrap;
+}
+
+.dashboard .group {
+  position: absolute;
+  width: 162px;
+  height: 32px;
+  top: 43px;
+  left: 175px;
+}
+
+.dashboard .text-wrapper-10 {
+  position: absolute;
+  top: 204px;
+  left: 172px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #7f7e7e;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: 21.6px;
+  white-space: nowrap;
+}
+
+.dashboard .ellipse {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 40px;
+  left: 1344px;
+  object-fit: cover;
+}
