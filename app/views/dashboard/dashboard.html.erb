@@ -4,33 +4,37 @@
         <div class="nav-bar">
           <div class="menu">
             <div class="div-2">
-              <img class="vector" src="img/vector-2.svg" />
-              <div class="calories">Dashboard</div>
+              <i class="fa-solid fa-house" style="color: #7F7E7E;"></i>
+              <div class="calories-2">Dashboard</div>
             </div>
             <div class="div-2">
-              <img class="img" src="img/vector-20.svg" />
-              <div class="text-wrapper">Recipes</div>
+            <i class="fa-solid fa-robot" style="color: #808080;"></i>
+              <div class="calories-2">Generate a Recipe</div>
             </div>
             <div class="div-2">
-              <img class="vector-2" src="img/vector-4.svg" />
+              <i class="fa-solid fa-utensils" style="color: #7F7E7E;"></i>
+              <div class="calories-2">Recipes</div>
+            </div>
+            <div class="div-2">
+              <i class="fa-regular fa-calendar" style="color: #7F7E7E;"></i>
               <div class="calories-2">Meal-prep</div>
             </div>
             <div class="div-2">
-              <img class="vector-3" src="img/vector-6.svg" />
-              <div class="calories-2">Saved</div>
+            <i class="fa-solid fa-book-open" style="color: #7F7E7E;"></i>
+              <div class="calories-2">My Cookbook</div>
             </div>
             <div class="div-2">
-              <img class="vector-4" src="img/vector-3.svg" />
+              <i class="fa-solid fa-gear" style="color: #7F7E7E;"></i>
               <div class="calories-2">Settings</div>
             </div>
           </div>
           <div class="div-2">
-            <img class="vector-5" src="img/vector-9.svg" />
-            <div class="calories-2">Logout</div>
+            <i class="fa-solid fa-right-from-bracket" style="color: #7F7E7E;"></i>
+            <div class="calories-2"><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %></div>
           </div>
         </div>
         <div class="primary-btn">
-          <img class="utensils-solid" src="img/utensils-solid-1-2.svg" />
+              <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i>
           <div class="text-wrapper-2">Create Recipe</div>
         </div>
         <div class="btn">
@@ -253,8 +257,7 @@
           </div>
         </div>
         <div class="text-wrapper-9">Hey Boris!</div>
-        <img class="group" src="img/group-18126.png" />
         <div class="text-wrapper-10">Tuesday, 28 Jun 2023</div>
-        <img class="ellipse" src="img/ellipse-9.png" />
+
       </div>
     </div>
