@@ -16,7 +16,12 @@ class MealPlansController < ApplicationController
   def create
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
+    response = ai_meal_plan(@meal_plan)
+    raise
     if @meal_plan.save
+      response.values.each do |recipe|
+        RecipeJob.perform_now(@meal_plan.id, recipe)
+      end
       redirect_to meal_plan_path(@meal_plan)
     else
       render :new, status: :unprocessable_entity
@@ -27,32 +32,32 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.find(params[:id])
   end
 
-  def ai_meal_plan
-    # @days = 2
-    @diet = "vegan"
-    # @alergies = ['milk']
+  def ai_meal_plan(meal_plan)
+    diet = meal_plan.diet
+    days = meal_plan.end_date - meal_plan.start_date
     json_format = {
-      "days":[
-          {
-            "day":{
-                "breakfast":{
-                  "title":"",
-                  "ingredients":""
-                },
-                "lunch":{
-                  "title":"",
-                  "ingredients":""
-                },
-                "dinner":{
-                  "title":"",
-                  "ingredients":""
-                }
+
+            "breakfast":{
+              "title":"",
+              "ingredients":""
+            },
+            "lunch":{
+              "title":"",
+              "ingredients":""
+            },
+            "dinner":{
+              "title":"",
+              "ingredients":""
             }
-          }
-      ]
     }.to_s
 
-    @response = JSON.parse(OpenaiService.new("create a #{@diet} meals plan for a day with recipes in the following json format " + json_format).call)
+    JSON.parse(OpenaiService.new("create a #{@diet} meal plan for #{days} days with recipes in the following json format " + json_format + "each day should have three meals.").call)
+  end
+
+  private
+
+  def meal_plan_params
+    params.require(:meal_plan).permit(:name, :start_date, :end_date, :diet)
   end
 end
 
