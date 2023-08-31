@@ -1,12 +1,71 @@
 .navbar-lewagon {
+  width: 100%;
   justify-content: space-between;
-  background: white;
+  background: transparent;
+  // box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.5);
+  transition: 0.8s ease;
+  border-radius: 3px;
+
+  a {
+    font-family: $body-font;
+    color: white;
+    transition: 0.8s ease;
+  }
+
+  a:hover {
+    color: $alert-orange;
+    transition: 0.8s ease;
+  }
+
+  .button-nav {
+    border: 1px solid $alert-orange;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin: 0 2rem;
+    border-radius: 4px;
+
+    &:hover {
+      color: $alert-orange;
+      background-color: $alert-orange-light;
+      transition: 0.8s ease;
+    }
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.dropdown-menu {
+  border: 1px solid $alert-orange;
+  background-color: $alert-orange-light;
+  border-radius: 3px;
+
+  a {
+    color: $alert-orange;
+  }
+}
+
+.dropdown-item {
+  &:hover {
+    background-color: white;
+    transition: 0.7s ease;
+  }
+}
+
+.account {
+  width: 3rem;
+  transition: 0.7s ease;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+    transition: 0.7s ease;
+  }
+}
+
+.navbar-back {
+  position: absolute;
+  height: 6rem;
+  background-color: #84BD00;
 }

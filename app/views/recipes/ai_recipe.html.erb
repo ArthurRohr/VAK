@@ -1,3 +1,58 @@
+<div class="container m-5 p-3">
+
+  <!-- Title -->
+  <div class="container">
+    <h1 class="pt-5"><%= @title %></h1>
+  </div>
+
+  <!-- Icons -->
+  <div class="container pt-3">
+    <ul class="list-inline rounded-4 pt-3">
+      <li class="list-inline-item pe-3"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> Time:  <%= @cooking_time %></li>
+      <li class="list-inline-item pe-3"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> Cuisine: ?</li>
+      <li class="list-inline-item pe-3"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> Diet: ?</li>
+      <li class="list-inline-item pe-3"><i class="fa-solid fa-user-group p-2 rounded-5" style="color: #c4d600; background-color: #edf2b2"></i> Servings: <%= @servings %></li>
+    </ul>
+  </div>
+
+  <!-- Ingredients and Instructions -->
+  <div class="container pt-3">
+    <div class="row">
+        <div class="col bg-white rounded-4 p-4 me-2">
+          <h4>Ingredients</h4>
+          <% @ingredients.each do | ingredient | %>
+              <li class="list-group-item"><%= ingredient %></li>
+          <% end %>
+        </div>
+
+        <div class="col bg-white rounded-4 p-4 ms-2">
+          <h4>Instructions</h4>
+          <% @instructions.each do |instruction| %>
+            <li class="list-group-item"><%= instruction %></li>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+  <!-- Nutritional Values -->
+  <div class="container p-4 bg-white rounded-4 mt-3">
+    <h4>Nutritional Values</h4>
+    <p>Calories: <%= @nutrition["calorie"] %></p>
+    <p>Total Fat: <%= @nutrition["total-fat"] %></p>
+    <p>Saturated Fat: <%= @nutrition["saturated-fat"] %></p>
+    <p>Carbohydrate: <%= @nutrition["carbs"] %></p>
+    <p>Protien: <%= @nutrition["protein"] %></p>
+    <p>Sodium: <%= @nutrition["sodium"] %></p>
+    <p>Fiber: <%= @nutrition["fiber"] %></p>
+    <p>Sugar: <%= @nutrition["sugar"] %></p>
+    <p>Cholestrol: <%= @nutrition["cholesterol"] %></p>
+  </div>
+</div>
+
+
+
+
+<!--
 <div class="container">
 
     <h2>Title</h2>
@@ -13,6 +68,7 @@
     <li><%= @cooking_time %></li>
     <h2>Servings</h2>
     <li> <%= @servings %></li>
+
 
     <h2>Nutritional Values</h2>
     <% @nutrition["calorie"] = 0 if @nutrition["calorie"].length==""%>
@@ -68,4 +124,6 @@
 
       <%= f.submit "Save this Recipe", class: "button-form" %>
     <% end %>
+
 </div>
+-->
