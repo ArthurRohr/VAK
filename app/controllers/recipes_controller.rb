@@ -28,7 +28,6 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-
     @response = JSON.parse(OpenaiService.new('Recipe with chicken,noodles,brokkoli and its nutrition in the following json format
                                                           {
                                                             "recipe": {
