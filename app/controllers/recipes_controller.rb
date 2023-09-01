@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   def create
 
     @recipe = Recipe.new(recipe_params)
-    raise
+
     @recipe.user = current_user
     @recipe.ai_created = 1 if params[:nutrition]
     if @recipe.save
@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
       # Associate the new instance with the saved @recipe instance
       # save the new instance of nutritional_value
       if params[:nutrition]
+
         @nutrition = params[:nutrition].split.each_slice(2).to_a.to_h
         @nutrition = NutritionalValue.new(@nutrition)
         @nutrition.recipe = @recipe
@@ -60,7 +61,7 @@ class RecipesController < ApplicationController
         "cooking_time": "",
         "servings": "",
         "cuisine": "",
-        "nutrition": [:calorie,:total-fat,:saturated-fat,:sodium,:carbs,:fiber,:sugar,:protien,:cholestrol]
+        "nutrition": [:calories,:total_fat,:saturated_fat,:sodium,:carbs,:dietary_fiber,:sugar,:protien,:cholestrol]
         }
       }'.gsub('\n', '')
 
