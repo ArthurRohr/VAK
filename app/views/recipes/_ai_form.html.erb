@@ -1,13 +1,11 @@
 <%= render "layouts/navbar" %>
-
 <div class="container my-5 forms bg-white rounded-4 p-5" style="width: 50%;">
  <h4 class="pb-3">Generate Recipe</h4>
   <%= simple_form_for :recipes, url:  ai_recipe_path, method: :get do |f| %>
     <%= f.input :ingredients %>
     <%= f.input :time %>
-    <%= f.input :cuisine %>
-    <%= f.input :diet %>
-    <%= f.input :servings %>
+    <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, prompt: 'Any' %>
+    <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
     <%= f.submit "Submit", class: "btn-signup" %>
   <% end %>
 </div>
