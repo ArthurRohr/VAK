@@ -9,8 +9,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @nutrition = NutritionalValue.where(recipe_id: @recipe)
-
   end
 
   def new
@@ -23,7 +21,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     @recipe.user = current_user
-    @recipe.ai_created = 1 if params[:nutrition]
     if @recipe.save
       # If the params have the :nutritional_values key, you will do the following
       # Instantiate a new nutritional_value model with the values from the params
@@ -34,6 +31,7 @@ class RecipesController < ApplicationController
         @nutrition = params[:nutrition].split.each_slice(2).to_a.to_h
         @nutrition = NutritionalValue.new(@nutrition)
         @nutrition.recipe = @recipe
+
         @nutrition.save
       end
 
@@ -45,6 +43,7 @@ class RecipesController < ApplicationController
 
   def ai_recipe
 
+
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
@@ -52,6 +51,7 @@ class RecipesController < ApplicationController
     @servings = params["recipes"]["servings"]
 
     prompt = "#{@diet} one Recipe with only #{@ingredients} of type #{@cuisine} in less than #{@time}"
+
 
     json_format = '{
       "recipe": {
@@ -62,12 +62,9 @@ class RecipesController < ApplicationController
         "servings": "",
         "cuisine": "",
         "nutrition": [:calories,:total_fat,:saturated_fat,:sodium,:carbs,:dietary_fiber,:sugar,:protien,:cholestrol]
-        }
-      }'.gsub('\n', '')
 
 
-    api_reponse = OpenaiService.new("#{prompt} and its nutrition in the following json format #{json_format}").call
-    @response = JSON.parse(api_reponse)
+    @response = JSON.parse(OpenaiService.new("#{prompt} and its nutrition in the following json format #{json_format}").call)
 
     @title = @response["recipe"]["title"]
     @ingredients = @response["recipe"]["ingredients"]
@@ -85,7 +82,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-
-    params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :servings, :pictures, :ai_created)
+    params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :servings, :pictures)
   end
 end
