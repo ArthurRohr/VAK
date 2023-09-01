@@ -42,7 +42,6 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
@@ -73,7 +72,6 @@ class RecipesController < ApplicationController
     @cooking_time = @response["recipe"]["cooking_time"]
     @servings = @response["recipe"]["servings"]
     @nutrition = @response["recipe"]["nutrition"]
-
   end
 
   def ai_recipe_new

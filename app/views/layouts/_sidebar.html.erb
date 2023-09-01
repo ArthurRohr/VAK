@@ -1,0 +1,55 @@
+       <div class="d-flex justify-content-center">
+        <div class="nav-bar">
+          <div class="menu">
+            <div class="div-2">
+              <%= link_to dashboard_path, class: "nav-link" do %>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <i class="fa-solid fa-house" style="color: #7F7E7E;"></i>
+                  <div class="calories-2">Dashboard</div>
+                </div>
+              <% end %>
+            </div>
+            <div class="div-2">
+              <%= link_to ai_recipe_path, class: "nav-link" do %>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <i class="fa-solid fa-robot" style="color: #7F7E7E;"></i>
+                  <div class="calories-2">Generate a Recipe</div>
+                </div>
+              <% end %>
+            </div>
+            <div class="div-2">
+              <%= link_to recipes_path, class: "nav-link" do %>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <i class="fa-solid fa-utensils" style="color: #7F7E7E;"></i>
+                  <div class="calories-2">Recipes</div>
+                </div>
+              <% end %>
+            </div>
+            <div class="div-2">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <i class="fa-regular fa-calendar" style="color: #7F7E7E;"></i>
+              <div class="calories-2">Meal Plans</div>
+            </div>
+            </div>
+            <div class="div-2">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+            <i class="fa-solid fa-book-open" style="color: #7F7E7E;"></i>
+              <div class="calories-2">My Cookbook</div>
+            </div>
+            </div>
+            <div class="div-2">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <i class="fa-solid fa-gear" style="color: #7F7E7E;"></i>
+              <div class="calories-2">Settings</div>
+            </div>
+            </div>
+          </div>
+          <div class="div-2">
+              <%= link_to destroy_user_session_path,  class: "dropdown-item", data: {turbo_method: :delete}  do %>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <i class="fa-solid fa-right-from-bracket" style="color: #7F7E7E;"></i>
+                  <div class="calories-2">Logout</div>
+                </div>
+              <% end %>
+        </div>
+</div>
