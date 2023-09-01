@@ -43,10 +43,6 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-<<<<<<< HEAD
-
-=======
->>>>>>> 6f6282c76045051d6926c08b18d2608b4f07afb2
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
