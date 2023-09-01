@@ -5,6 +5,7 @@
     <%= f.input :ingredients %>
     <%= f.input :time %>
     <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, prompt: 'Any' %>
+    <%# test comment %>
     <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
     <%= f.submit "Submit", class: "btn-signup" %>
   <% end %>
