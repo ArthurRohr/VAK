@@ -1,74 +1,102 @@
+<%= render "layouts/navbar" %>
 
-<div class="container">
-
-    <h2>Recipe Title</h2>
-    <%= @title %>
-    <h2>Ingredients</h2>
-        <li><%= @ingredients %></li>
+<div class="container d-flex justify-content-center my-5">
+  <div class="p-3">
 
 
-    <h2>Instructions</h2>
-        <%= @instructions %>
+    <div class="container">
+      <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80" alt="Food" class="rounded-4" style="width: 100%; height: 500px; object-fit: cover;">
 
-    <h2>Cooking Time</h2>
-    <li><%= @cooking_time %></li>
-    <h2>Servings</h2>
-    <li> <%= @servings %></li>
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="pt-5"><%= @title %></h1>
+
+        <div>
+          <%= simple_form_for(Recipe.new) do |f| %>
+              <%= f.input :name, input_html: {value: @title}, :as => :hidden %>
+              <%= f.input :ingredients, input_html: {value: @ingredients}, :as => :hidden %>
+              <%= f.input :instructions, input_html: {value: @instructions}, :as => :hidden  %>
+              <%= f.input :time, input_html: {value: @time},:as => :hidden %>
+              <%= f.input :cuisine, input_html: {value: @cuisine},:as => :hidden %>
+              <%= f.input :diet, input_html: {value: @diet},:as => :hidden%>
+              <%= f.input :servings, input_html: {value: @servings},:as => :hidden%>
+
+              <%= hidden_field_tag 'nutrition', @nutrition %>
+
+              <%= f.submit "Save this Recipe", class: "button-form btn-signup mt-1" %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container pt-3">
+      <ul class="list-inline rounded-4 pt-3">
+        <li class="list-inline-item pe-3"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> Time: <%= @cooking_time %></li>
+        <li class="list-inline-item pe-3"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> Cuisine: <%= @cuisine %></li>
+        <li class="list-inline-item pe-3"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> Diet: </li>
+        <li class="list-inline-item pe-3"><i class="fa-solid fa-user-group p-2 rounded-5" style="color: #c4d600; background-color: #edf2b2"></i> Servings: <%= @servings %></li>
+      </ul>
+    </div>
 
 
-    <h2>Nutritional Values</h2>
-    <% @nutrition["calorie"] = 0 if @nutrition["calorie"].length==""%>
-    <p>Calories : <%= @nutrition["calorie"] %></p>
 
-    <% @nutrition["total-fat"]= 0 if @nutrition["total-fat"].length=="" %>
-    <p>Total Fat : <%= @nutrition["total-fat"] %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col bg-white rounded-4 me-2 p-5">
+          <h4 class="pb-3">Ingredients</h4>
+          <li class="list-group-item"><%= @ingredients %></li>
+        </div>
 
-    <% @nutrition["saturated-fat"] = 0 if @nutrition["saturated-fat"].length=="" %>
-    <p>Saturated Fat : <%= @nutrition["saturated-fat"] %></p>
+        <div class="col bg-white rounded-4 ms-2 p-5">
+          <h4 class="pb-3">Instructions</h4>
+          <li class="list-group-item"><%= @instructions %></li>
+        </div>
+      </div>
+    </div>
 
-    <% @nutrition["carbs"] = 0 if @nutrition["carbs"].length=="" %>
-    <p>Carbohydrate : <%= @nutrition["carbs"] %></p>
+    <div class="container bg-white rounded-4 mt-3 p-5">
+      <h4 class="pb-3">Nutritional Values</h4>
+      <% @nutrition["calorie"] = 0 if @nutrition["calorie"].length==""%>
+      <p>Calories : <%= @nutrition["calorie"] %></p>
 
-    <% @nutrition["protein"] = 0 if @nutrition["protein"].length=="" %>
-    <p>Protien : <%= @nutrition["protein"] %></p>
+      <% @nutrition["total-fat"]= 0 if @nutrition["total-fat"].length=="" %>
+      <p>Total Fat : <%= @nutrition["total-fat"] %></p>
 
-    <% @nutrition["sodium"] = 0 if @nutrition["sodium"].length=="" %>
-    <p>Sodium : <%= @nutrition["sodium"] %></p>
+      <% @nutrition["saturated-fat"] = 0 if @nutrition["saturated-fat"].length=="" %>
+      <p>Saturated Fat : <%= @nutrition["saturated-fat"] %></p>
 
-    <% @nutrition["fiber"] = 0 if @nutrition["fiber"].length=="" %>
-    <p>Fiber : <%= @nutrition["fiber"] %></p>
+      <% @nutrition["carbs"] = 0 if @nutrition["carbs"].length=="" %>
+      <p>Carbohydrate : <%= @nutrition["carbs"] %></p>
 
-    <% @nutrition["sugar"] = 0 if @nutrition["sugar"].length=="" %>
-    <p>Sugar: <%= @nutrition["sugar"] %></p>
+      <% @nutrition["protein"] = 0 if @nutrition["protein"].length=="" %>
+      <p>Protien : <%= @nutrition["protein"] %></p>
 
-    <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].length=="" %>
-    <p>Cholestrol : <%=  @nutrition["cholesterol"] %></p>
+      <% @nutrition["sodium"] = 0 if @nutrition["sodium"].length=="" %>
+      <p>Sodium : <%= @nutrition["sodium"] %></p>
 
-    <% @nutrition = {
-                      :calories=> @nutrition["calorie"],
-                      :total_fat=> @nutrition["total-fat"],
-                      :saturated_fat=> @nutrition["saturated-fat"],
-                      :sodium=> @nutrition["sodium"],
-                      :carbs=> @nutrition["carbs"],
-                      :dietary_fiber=> @nutrition["fiber"],
-                      :sugar=> @nutrition["sugar"],
-                      :protein=> @nutrition["protein"],
-                      :cholesterol=> @nutrition["cholesterol"]
-                    }
-      %>
+      <% @nutrition["fiber"] = 0 if @nutrition["fiber"].length=="" %>
+      <p>Fiber : <%= @nutrition["fiber"] %></p>
 
-    <%= simple_form_for(Recipe.new) do |f| %>
-      <%= f.input :name, input_html: {value: @title}, :as => :hidden %>
-      <%= f.input :ingredients, input_html: {value: @ingredients}, :as => :hidden %>
-      <%= f.input :instructions, input_html: {value: @instructions}, :as => :hidden  %>
-      <%= f.input :time, input_html: {value: @time},:as => :hidden %>
-      <%= f.input :cuisine, input_html: {value: @cuisine},:as => :hidden %>
-      <%= f.input :diet, input_html: {value: @diet},:as => :hidden%>
-      <%= f.input :servings, input_html: {value: @servings},:as => :hidden%>
+      <% @nutrition["sugar"] = 0 if @nutrition["sugar"].length=="" %>
+      <p>Sugar: <%= @nutrition["sugar"] %></p>
 
-      <%= hidden_field_tag 'nutrition', @nutrition %>
+      <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].length=="" %>
+      <p>Cholestrol : <%=  @nutrition["cholesterol"] %></p>
 
-      <%= f.submit "Save this Recipe", class: "button-form" %>
-    <% end %>
+      <% @nutrition = {
+                        :calories=> @nutrition["calorie"],
+                        :total_fat=> @nutrition["total-fat"],
+                        :saturated_fat=> @nutrition["saturated-fat"],
+                        :sodium=> @nutrition["sodium"],
+                        :carbs=> @nutrition["carbs"],
+                        :dietary_fiber=> @nutrition["fiber"],
+                        :sugar=> @nutrition["sugar"],
+                        :protein=> @nutrition["protein"],
+                        :cholesterol=> @nutrition["cholesterol"]
+                      }
+        %>
+    </div>
 
+
+  </div>
 </div>
