@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @nutrition = NutritionalValue.where(recipe_id: @recipe)
-
   end
 
   def new
@@ -43,6 +42,7 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
+
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
@@ -83,7 +83,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-
     params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :servings, :pictures, :ai_created)
   end
 end
