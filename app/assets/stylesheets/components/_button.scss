@@ -1,0 +1,18 @@
+.btn-signup {
+  background-color: $alert-orange;
+  color: $alert-orange-light;
+  border: 1px solid $alert-orange-light;
+  font-family: $body-font;
+  font-size: 1.2rem;
+  transition: 0.7s ease;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+
+  &:hover{
+    background-color: $alert-orange-light;
+    color: $alert-orange;
+    border: 1px solid $alert-orange;
+    transition: 0.7s ease;
+  }
+}
