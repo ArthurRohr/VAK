@@ -19,7 +19,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-
     @recipe = Recipe.new(recipe_params)
 
     @recipe.user = current_user
@@ -44,7 +43,6 @@ class RecipesController < ApplicationController
   end
 
   def ai_recipe
-
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
