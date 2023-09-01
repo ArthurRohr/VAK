@@ -5,8 +5,8 @@
   <%= simple_form_for :recipes, url:  ai_recipe_path, method: :get do |f| %>
     <%= f.input :ingredients %>
     <%= f.input :time %>
-    <%= f.input :cuisine %>
-    <%= f.input :diet %>
+    <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, prompt: 'Any' %>
+    <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
     <%= f.input :servings %>
     <%= f.submit "Submit", class: "btn-signup" %>
   <% end %>
