@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <%# <%= render "layouts/navbar" %>
+    <%# <%= render "layouts/navbar"  außer homepage %>
+    <%= render "layouts/sidebar" unless current_page?(root_path) %>
     <%= yield %>
   </body>
 </html>

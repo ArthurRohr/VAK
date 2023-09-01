@@ -5,34 +5,20 @@
   justify-content: center;
   width: 100%;
 }
+a.primary-btn {
+  text-decoration: none; /* Entfernt die Unterstreichung */
+  color: #FFFFFF; /* Setzt die Textfarbe auf Weiß */
+}
+
+.not-clickable {
+  pointer-events: none; /* Deaktiviert die Mausklicks für das Element */
+  /* Füge hier weitere Stile für das deaktivierte Element hinzu, wenn nötig */
+}
 
 .dashboard .div {
   background-color: #f3f3f3;
-  width: 1440px;
-  height: 1024px;
-  position: relative;
-}
-
-.dashboard .nav-bar {
-  display: flex;
-  flex-direction: column;
-  width: 124px;
-  height: 1024px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 0px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
-}
-
-.dashboard .menu {
-  display: inline-flex;
-  flex-direction: column;
-  height: 455px;
-  align-items: center;
-  justify-content: space-between;
+  width: 80%;
+  height: 100vh;
   position: relative;
 }
 
@@ -45,10 +31,69 @@
   flex: 0 0 auto;
 }
 
+.dashboard .menu {
+  display: inline-flex;
+  flex-direction: column;
+  height: 455px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+
 .dashboard .vector {
   position: relative;
   width: 24px;
   height: 24px;
+}
+
+.dashboard .vector-2 {
+  position: relative;
+  width: 21px;
+  height: 24px;
+}
+
+.dashboard .vector-3 {
+  position: relative;
+  width: 18px;
+  height: 24px;
+}
+
+.dashboard .vector-4 {
+  position: relative;
+  width: 22.62px;
+  height: 24px;
+}
+
+.dashboard .vector-5 {
+  position: relative;
+  width: 22px;
+  height: 19px;
+}
+
+.dashboard .vector-6 {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 13px;
+  left: 13px;
+}
+
+
+.dashboard .vector-7 {
+  position: absolute;
+  width: 24px;
+  height: 21px;
+  top: 13px;
+  left: 11px;
+}
+
+.dashboard .vector-8 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 12px;
+  left: 12px;
 }
 
 .dashboard .calories {
@@ -61,6 +106,42 @@
   letter-spacing: 0;
   line-height: 11.4px;
   white-space: nowrap;
+}
+
+.dashboard .calories-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #7f7e7e;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  white-space: nowrap;
+}
+
+.dashboard .calories-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #333333;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17.8px;
+  white-space: nowrap;
+}
+
+.dashboard .calories-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 6px 0px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
 }
 
 .dashboard .img {
@@ -82,41 +163,12 @@
   white-space: nowrap;
 }
 
-.dashboard .vector-2 {
-  position: relative;
-  width: 21px;
-  height: 24px;
-}
 
-.dashboard .calories-2 {
-  position: relative;
-  width: fit-content;
-  font-family: "Poppins-Regular", Helvetica;
-  font-weight: 400;
-  color: #7f7e7e;
-  font-size: 9px;
-  letter-spacing: 0;
-  line-height: 11.4px;
-  white-space: nowrap;
-}
 
-.dashboard .vector-3 {
-  position: relative;
-  width: 18px;
-  height: 24px;
-}
 
-.dashboard .vector-4 {
-  position: relative;
-  width: 22.62px;
-  height: 24px;
-}
 
-.dashboard .vector-5 {
-  position: relative;
-  width: 22px;
-  height: 19px;
-}
+
+
 
 .dashboard .primary-btn {
   display: inline-flex;
@@ -369,13 +421,7 @@
   overflow: hidden;
 }
 
-.dashboard .vector-6 {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  top: 13px;
-  left: 13px;
-}
+
 
 .dashboard .details {
   display: inline-flex;
@@ -386,18 +432,7 @@
   flex: 0 0 auto;
 }
 
-.dashboard .calories-3 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Poppins-Medium", Helvetica;
-  font-weight: 500;
-  color: #333333;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 17.8px;
-  white-space: nowrap;
-}
+
 
 .dashboard .leaf-solid {
   position: relative;
@@ -408,13 +443,6 @@
   overflow: hidden;
 }
 
-.dashboard .vector-7 {
-  position: absolute;
-  width: 24px;
-  height: 21px;
-  top: 13px;
-  left: 11px;
-}
 
 .dashboard .drumstick-bite {
   position: relative;
@@ -425,13 +453,6 @@
   overflow: hidden;
 }
 
-.dashboard .vector-8 {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 12px;
-  left: 12px;
-}
 
 .dashboard .btn-5 {
   width: 281px;
@@ -482,16 +503,7 @@
   width: 100%;
 }
 
-.dashboard .calories-4 {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 6px 0px;
-  position: relative;
-  align-self: stretch;
-  flex: 0 0 auto;
-}
+
 
 .dashboard .calories-5 {
   position: relative;

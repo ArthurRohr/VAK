@@ -1,63 +1,37 @@
 
     <div class="dashboard">
       <div class="div">
-        <div class="nav-bar">
-          <div class="menu">
-            <div class="div-2">
-              <i class="fa-solid fa-house" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Dashboard</div>
-            </div>
-            <div class="div-2">
-            <i class="fa-solid fa-robot" style="color: #808080;"></i>
-              <div class="calories-2">Generate a Recipe</div>
-            </div>
-            <div class="div-2">
-              <i class="fa-solid fa-utensils" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Recipes</div>
-            </div>
-            <div class="div-2">
-              <i class="fa-regular fa-calendar" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Meal-prep</div>
-            </div>
-            <div class="div-2">
-            <i class="fa-solid fa-book-open" style="color: #7F7E7E;"></i>
-              <div class="calories-2">My Cookbook</div>
-            </div>
-            <div class="div-2">
-              <i class="fa-solid fa-gear" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Settings</div>
-            </div>
-          </div>
-          <div class="div-2">
-            <i class="fa-solid fa-right-from-bracket" style="color: #7F7E7E;"></i>
-            <div class="calories-2"><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %></div>
-          </div>
-        </div>
-        <div class="primary-btn">
-              <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i>
+        <%= link_to new_recipe_path, class: "primary-btn" do %>
+          <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i>
           <div class="text-wrapper-2">Create Recipe</div>
-        </div>
-        <div class="btn">
+        <% end %>
+
+        <div class="btn not-clickable">
           <div class="text-wrapper-3">Created Recipes</div>
           <div class="frame">
-            <img class="utensils-solid-2" src="img/utensils-solid-1.svg" />
-            <div class="text-wrapper-4">2.050</div>
+            <i class="fa-solid fa-utensils" style="color: #84BD00; font-size: 24px;"></i>
+            <div class="text-wrapper-4"><%= @recipe_count %></div>
           </div>
         </div>
-        <div class="btn-2">
+
+        <div class="btn-2 not-clickable ">
           <div class="text-wrapper-3">Weeks w/ prep-meals</div>
           <div class="frame">
-            <img class="calendar-regular" src="img/calendar-regular-1.svg" />
+            <i class="fa-regular fa-calendar" style="color: #FDC040; font-size: 24px;"></i>
             <div class="text-wrapper-5">12</div>
           </div>
         </div>
-        <div class="btn-3">
+        <div class="btn-3 not-clickable">
           <div class="text-wrapper-3">Saved Recipes</div>
           <div class="frame">
-            <img class="calendar-regular" src="img/calendar-regular-1-2.svg" />
+            <i class="fa-solid fa-bookmark" style="color: #E87767; font-size: 24px;"></i>
             <div class="text-wrapper-6">2.050</div>
           </div>
         </div>
+
+
+<%# NEED MEALPLANS FOR THIS  %>
+
         <div class="btn-4">
           <div class="frame-2">
             <div class="text-wrapper-3">Today’s prep-meal dishes</div>
@@ -113,12 +87,32 @@
             </div>
           </div>
         </div>
-        <div class="btn-5">
-          <div class="frame-2">
-            <div class="text-wrapper-3">Favourites</div>
-            <p class="p"><span class="span">See more</span> <span class="text-wrapper-7"> →</span></p>
-          </div>
-          <div class="text-wrapper-8">Last saves</div>
+
+<%# NEED MEALPLANS FOR THIS  %>
+
+
+<!-- app/views/recipes/user_recent_recipes.html.erb -->
+<div class="btn-5">
+  <div class="frame-2">
+    <div class="text-wrapper-3">Favourites</div>
+    <p class="p"><span class="span">See more</span> <span class="text-wrapper-7"> →</span></p>
+  </div>
+  <div class="text-wrapper-8">Last saves</div>
+
+  <% @user_recipes.each do |recipe| %>
+    <div class="ingredient">
+    <div class="drumstick-bite"><i class="fa-solid fa-bowl-rice" style="color: #808080;"></i>
+      <div class="details">
+        <div class="calories-3"><%= recipe.name %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<%#
           <div class="ingredient">
             <div class="drumstick-bite"><img class="vector-8" src="img/vector-12.svg" /></div>
             <div class="details">
@@ -154,7 +148,12 @@
               <div class="calories-2">Lunch | Dinner</div>
             </div>
           </div>
-        </div>
+        </div> %>
+
+
+<%# INSERT DIAGRAMM HERE %>
+
+
         <div class="overlap-group">
           <div class="btn-6">
             <div class="frame-2">
@@ -256,8 +255,14 @@
             </div>
           </div>
         </div>
-        <div class="text-wrapper-9">Hey Boris!</div>
-        <div class="text-wrapper-10">Tuesday, 28 Jun 2023</div>
-
+        <div class="text-wrapper-9">Hey Arthur!</div>
+        <div class="text-wrapper-10" id="current-date">
+          <script>
+            const currentDate = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+            document.getElementById('current-date').textContent = formattedDate;
+          </script>
+        </div>
       </div>
     </div>

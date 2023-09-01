@@ -1,0 +1,102 @@
+.nav-bar {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 1024px;
+  justify-content: space-between;
+  padding: 40px 0px;
+  position: relative;
+  width: 124px;
+}
+
+.nav-bar .menu {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  height: 455px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-bar .div {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.nav-bar .vector {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.nav-bar .calories {
+  color: #84bd00;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.nav-bar .img {
+  height: 24px;
+  position: relative;
+  width: 20.75px;
+}
+
+.nav-bar .text-wrapper {
+  color: #7f7e7e;
+  font-family: "Poppins-Regular", Helvetica;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.nav-bar .vector-2 {
+  height: 24px;
+  position: relative;
+  width: 21px;
+}
+
+.nav-bar .calories-2 {
+  color: #7f7e7e;
+  font-family: "Poppins-Regular", Helvetica;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 11.4px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.nav-bar .vector-3 {
+  height: 24px;
+  position: relative;
+  width: 18px;
+}
+
+.nav-bar .vector-4 {
+  height: 24px;
+  position: relative;
+  width: 22.62px;
+}
+
+.nav-bar .vector-5 {
+  height: 19px;
+  position: relative;
+  width: 22px;
+}
