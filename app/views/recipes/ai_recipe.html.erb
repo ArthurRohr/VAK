@@ -44,12 +44,19 @@
       <div class="row">
         <div class="col bg-white rounded-4 me-2 p-5">
           <h4 class="pb-3">Ingredients</h4>
-          <li class="list-group-item"><%= @ingredients %></li>
+
+          <% ingredients = @response["recipe"]["ingredients"].split(',') %>
+          <% ingredients.each do | ingredient | %>
+          <li class="list-group-item"><%= ingredient %></li>
+          <% end %>
         </div>
 
         <div class="col bg-white rounded-4 ms-2 p-5">
           <h4 class="pb-3">Instructions</h4>
-          <li class="list-group-item"><%= @instructions %></li>
+          <% instructions = @response["recipe"]["instructions"].lines.map(&:chomp) %>
+          <% instructions.each do | instruction | %>
+          <li class="list-group-item"><%= instruction %></li>
+          <% end %>
         </div>
       </div>
     </div>
