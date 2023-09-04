@@ -1,55 +1,38 @@
-       <div class="d-flex justify-content-center">
-        <div class="nav-bar">
-          <div class="menu">
-            <div class="div-2">
-              <%= link_to dashboard_path, class: "nav-link" do %>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <i class="fa-solid fa-house" style="color: #7F7E7E;"></i>
-                  <div class="calories-2">Dashboard</div>
-                </div>
-              <% end %>
-            </div>
-            <div class="div-2">
-              <%= link_to ai_recipe_path, class: "nav-link" do %>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <i class="fa-solid fa-robot" style="color: #7F7E7E;"></i>
-                  <div class="calories-2">Generate a Recipe</div>
-                </div>
-              <% end %>
-            </div>
-            <div class="div-2">
-              <%= link_to recipes_path, class: "nav-link" do %>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <i class="fa-solid fa-utensils" style="color: #7F7E7E;"></i>
-                  <div class="calories-2">Recipes</div>
-                </div>
-              <% end %>
-            </div>
-            <div class="div-2">
-            <div style="display: flex; flex-direction: column; align-items: center;">
-              <i class="fa-regular fa-calendar" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Meal Plans</div>
-            </div>
-            </div>
-            <div class="div-2">
-            <div style="display: flex; flex-direction: column; align-items: center;">
-            <i class="fa-solid fa-book-open" style="color: #7F7E7E;"></i>
-              <div class="calories-2">My Cookbook</div>
-            </div>
-            </div>
-            <div class="div-2">
-            <div style="display: flex; flex-direction: column; align-items: center;">
-              <i class="fa-solid fa-gear" style="color: #7F7E7E;"></i>
-              <div class="calories-2">Settings</div>
-            </div>
-            </div>
-          </div>
-          <div class="div-2">
-              <%= link_to destroy_user_session_path,  class: "dropdown-item", data: {turbo_method: :delete}  do %>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <i class="fa-solid fa-right-from-bracket" style="color: #7F7E7E;"></i>
-                  <div class="calories-2">Logout</div>
-                </div>
-              <% end %>
-        </div>
+<div class="d-flex justify-content-center">
+  <div class="side-bar">
+    <div class="menu">
+
+      <div class="icon-container text-center">
+        <%= link_to dashboard_path, class: "nav-link" do %>
+          <i class="fa-solid fa-house <%= 'active' if current_page?(dashboard_path) %>"><p class="<%= 'active' if current_page?(dashboard_path) %>">Dashboard</p></i>
+        <% end %>
+      </div>
+      <div class="icon-container text-center">
+        <%= link_to new_recipe_path(ai: true), class: "nav-link" do %>
+          <i class="fa-solid fa-robot <%= 'active' if current_page?(new_recipe_path(ai: true)) %>"><p class="<%= 'active' if current_page?(new_recipe_path(ai: true)) %>">Generate a<br> Recipe</p></i>
+        <% end %>
+      </div>
+      <div class="icon-container text-center">
+        <%= link_to recipes_path, class: "nav-link" do %>
+          <i class="fa-solid fa-utensils <%= 'active' if current_page?(recipes_path) %>"><p class="<%= 'active' if current_page?(recipes_path) %>">Recipes</p></i>
+        <% end %>
+      </div>
+      <div class="icon-container text-center">
+        <i class="fa-regular fa-calendar"><p>Meal Plans</p></i>
+      </div>
+      <div class="icon-container text-center">
+        <i class="fa-solid fa-book-open"><p>My Cookbook</p></i>
+      </div>
+      <div class="icon-container text-center">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fa-solid fa-gear <%= 'active' if current_page?(edit_user_registration_path) %>"><p class="<%= 'active' if current_page?(edit_user_registration_path) %>">Settings</p></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="icon-container text-center">
+      <%= link_to destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete}  do %>
+        <i class="fa-solid fa-right-from-bracket"><p>Logout</p></i>
+      <% end %>
+    </div>
+  </div>
 </div>
