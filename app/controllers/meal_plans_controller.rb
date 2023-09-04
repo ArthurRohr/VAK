@@ -27,7 +27,7 @@ class MealPlansController < ApplicationController
         day = 0
         recipe_hash.each do |_, recipe|
           day += 1
-          RecipeJob.perform_now(@meal_plan.id, recipe, response, current_user, day)
+          RecipeJob.perform_later(@meal_plan.id, recipe, response, current_user, day)
         end
         # RecipeJob.perform_now(@meal_plan.id, recipe)
       end
@@ -43,7 +43,7 @@ class MealPlansController < ApplicationController
 
   def ai_meal_plan(meal_plan)
     diet = meal_plan.diet
-    days = 5
+    days = meal_plan.days
     json_format = {
       "days1": {
             "breakfast":{
@@ -71,7 +71,7 @@ class MealPlansController < ApplicationController
   private
 
   def meal_plan_params
-    params.require(:meal_plan).permit(:name, :start_date, :end_date, :diet)
+    params.require(:meal_plan).permit(:name, :days, :diet)
   end
 end
 
