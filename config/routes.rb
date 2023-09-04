@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :recipes do
     resources :nutritional_values, only: :create
-    resources :bookmarks, only: :create
+    resources :bookmarks, only: [:new, :create, :index]
   end
 
   resources :meal_plans, except: [:edit, :update] do
