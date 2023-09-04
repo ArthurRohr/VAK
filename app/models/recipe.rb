@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
   has_many :users, through: :bookmarks
   has_many :meal_plans, through: :meal_plan_recipes
 
-  has_one_attached :pictures
+  has_one_attached :picture
   attribute :ai_created, default: false
 
   CUISINE = ["Italian", "Indian", "Mexican", "Japanese", "Chinese", "French", "Thai", "Mediterranean", "American", "Greek"]
