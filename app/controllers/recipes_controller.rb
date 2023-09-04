@@ -75,6 +75,24 @@ class RecipesController < ApplicationController
 
   end
 
+  def bookmark
+    @recipe = Recipe.find(params[:id])
+    if current_user.bookmarks.exclude?(@recipe)
+      current_user.bookmarks << @recipe
+      flash[:success] = "Recipe bookmarked."
+    end
+    redirect_to @recipe
+  end
+
+  def unbookmark
+    @recipe = Recipe.find(params[:id])
+    if current_user.bookmarks.include?(@recipe)
+      current_user.bookmarks.delete(@recipe)
+      flash[:success] = "Recipe removed from bookmarks."
+    end
+    redirect_to @recipe
+  end
+
   private
 
   def recipe_params
