@@ -1,0 +1,29 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon", style="position: fixed;">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "https://res.cloudinary.com/dgxfmpty5/image/upload/v1693484662/samples/food/vak-low-resolution-logo-color-on-transparent-background_hmrl9o.png", style: "width: 4rem; margin-left: 1rem;" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if !user_signed_in? %>
+          <li class="nav-item button-nav">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item dropdown">
+          <% if user_signed_in? %>
+            <%= image_tag "Chef-Icon.png", class: "avatar dropdown-toggle mx-3 account", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", dashboard_path, class: "dropdown-item" %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

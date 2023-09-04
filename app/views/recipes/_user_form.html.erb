@@ -1,6 +1,5 @@
-
-<div class="container my-5 forms">
- <h2>Create Recipe</h2>
+<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;">
+  <h2 class="pb-3">Create Recipe</h2>
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :name %>
     <%= f.input :ingredients%>
@@ -10,6 +9,6 @@
     <%= f.input :diet%>
     <%= f.input :servings%>
     <%= f.input :pictures, as: :file %>
-    <%= f.submit "Submit", class: "button-form" %>
+    <%= f.submit "Submit", class: "button-form btn-signup" %>
   <% end %>
 </div>

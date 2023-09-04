@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :nutritional_values, only: :create
     resources :bookmarks, only: :create
-
   end
 
   resources :meal_plans, except: [:edit, :update] do
@@ -23,4 +22,5 @@ Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  get '/dashboard', to: 'dashboard#dashboard'
 end

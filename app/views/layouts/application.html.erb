@@ -10,7 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="d-flex">
+    <%= render "layouts/sidebar" unless
+                                current_page?(root_path) ||
+                                current_page?(new_user_registration_path) ||
+                                current_page?(new_user_session_path) %>
     <%= yield %>
   </body>
 </html>

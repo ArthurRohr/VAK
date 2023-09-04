@@ -1,4 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to "Generate" , new_recipe_path(ai: true)  %>
+<%= render "layouts/navbar_home" %>
+<div class="img-background">
+  <div class="call-to-action">
+    <h1 class="mb-1">VAK<br>Virtually Assisted Kitchen</h1>
+    <p>Redefining Home Cooking: One Click, Endless Possibilities on Your Plate</p>
+    <%= link_to "Sign-up", new_user_registration_path, class: "btn-signup" %>
+  </div>
+</div>
