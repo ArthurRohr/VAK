@@ -10,28 +10,19 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Generate" , new_recipe_path(ai: true), class: "nav-link" %>
-          </li>
-          <% if !user_signed_in? %>
+        <% if !user_signed_in? %>
           <li class="nav-item button-nav">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
-          <% end %>
-          <li class="nav-item dropdown">
-            <% if user_signed_in? %>
+        <% end %>
+        <li class="nav-item dropdown">
+          <% if user_signed_in? %>
             <%= image_tag "Chef-Icon.png", class: "avatar dropdown-toggle mx-3 account", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-                <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
-
-              </div>
-            <% end %>
-          </li>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", dashboard_path, class: "dropdown-item" %>
+            </div>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
