@@ -2,7 +2,6 @@
 
   <div class="p-3">
     <div class="container">
-      <%# <img src=<%= @recipe.picture.key %> class="rounded-4" alt="..." style="width: 100%; height: 500px; object-fit: cover;"> %>
       <%= cl_image_tag @recipe.picture.key, crop: :fill %>
       <h1 class="pt-5"><%= @recipe.name %></h1>
     </div>
