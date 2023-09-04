@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module VKA
   class Application < Rails::Application
     config.generators do |generate|
+      config.active_job.queue_adapter = :sidekiq
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false

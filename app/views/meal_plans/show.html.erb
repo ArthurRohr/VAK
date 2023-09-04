@@ -1,2 +1,59 @@
+<% counter = 1 %>
+<% daycounter = 1 %>
+<% counter2 = 0 %>
+<% type = '' %>
 
-<h1><%= @recipe_data %></h1>
+<% @meal_plan_recipes.each do |meal_recipe| %>
+
+  <% counter += 1 and counter2 = 0 and daycounter = 1 if counter2 == 3 %>
+  <% if daycounter == 1 %>
+    <% type = 'Breakfast' %>
+  <% elsif daycounter == 2 %>
+    <% type = 'Lunch' %>
+  <% elsif daycounter == 3 %>
+    <% type = 'Dinner' %>
+  <% end %>
+  <% if counter2 < 1 %>
+    <h1>Day: <%= counter %></h1>
+  <% end %>
+  <p>Recipe: <%= meal_recipe.recipe.name %></p>
+
+  <!-- Split ingredients into a list -->
+  <p>Ingredients:</p>
+  <ul>
+    <% ingredients_list = meal_recipe.recipe.ingredients.split(', ') %>
+    <% ingredients_list.each do |ingredient| %>
+      <li><%= ingredient %></li>
+    <% end %>
+  </ul>
+
+  <p>Instructions: <%= meal_recipe.recipe.instructions %></p>
+  <p>Diet: <%= meal_recipe.recipe.cuisine %></p>
+  <% if meal_recipe.recipe.time.nil? %>
+    <p>Time: 30</p>
+  <% else %>
+    <p>Time: <%= meal_recipe.recipe.time %></p>
+  <% end %>
+  <p><%= type %></p>
+  <p>Servings: <%= meal_recipe.recipe.servings %></p>
+
+  <p>Nutritional value:</p>
+  <ul>
+    <li>Calories: <%= meal_recipe.recipe.nutritional_value.calories %></li>
+    <li>Total fat: <%= meal_recipe.recipe.nutritional_value.total_fat %>g</li>
+    <li>Saturated fat: <%= meal_recipe.recipe.nutritional_value.saturated_fat %>g</li>
+    <li>Sodium: <%= meal_recipe.recipe.nutritional_value.sodium %>mg</li>
+    <li>Carbs: <%= meal_recipe.recipe.nutritional_value.carbs %>g</li>
+    <li>Dietary fiber: <%= meal_recipe.recipe.nutritional_value.dietary_fiber %>g</li>
+    <li>Sugar: <%= meal_recipe.recipe.nutritional_value.sugar %>g</li>
+    <li>Protein: <%= meal_recipe.recipe.nutritional_value.protein %>g</li>
+    <li>Cholesterol: <%= meal_recipe.recipe.nutritional_value.cholesterol %>mg</li>
+
+
+  </ul>
+  <p>-----------------------------------------------</p>
+  <% counter2 += 1 %>
+  <% daycounter += 1 %>
+
+  <!-- Display other attributes as needed -->
+<% end %>
