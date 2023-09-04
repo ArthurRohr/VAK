@@ -6,7 +6,10 @@ class MealPlansController < ApplicationController
 
   def show
     # @meal_plan = MealPlan.find(params[:id])
-    ai_meal_plan
+    @meal_plan = MealPlan.find(params[:id])
+    @meal_plan_recipes = @meal_plan.meal_plan_recipes
+    #  @meal_plan_recipes.each do |meal_recipe|
+    #   end
   end
 
   def new
@@ -17,10 +20,16 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
     response = ai_meal_plan(@meal_plan)
-    raise
     if @meal_plan.save
-      response.values.each do |recipe|
-        RecipeJob.perform_now(@meal_plan.id, recipe)
+      # recipe-_hash:
+      # {"breakfast"=>{"title"=>"Vegan Pancakes", "ingredients"=>"1 cup flour, 1 tablespoon sugar, 2 teaspoons baking powder, 1/2 teaspoon salt, 1 cup almond milk, 1 tablespoon vegetable oil"}, "lunch"=>{"title"=>"Chickpea Salad Sandwich", "ingredients"=>"1 can chickpeas, 1/4 cup vegan mayo, 1/4 cup diced celery, 1/4 cup diced red onion, 1 tablespoon lemon juice, salt and pepper to taste, bread slices"}, "dinner"=>{"title"=>"Vegan Lentil Curry", "ingredients"=>"1 cup lentils, 1 onion (diced), 2 cloves garlic (minced), 1 tablespoon curry powder, 1 can diced tomatoes, 1 can coconut milk, salt and pepper to taste, cooked rice"}}
+      response.values.each do |recipe_hash|
+        day = 0
+        recipe_hash.each do |_, recipe|
+          day += 1
+          RecipeJob.perform_now(@meal_plan.id, recipe, response, current_user, day)
+        end
+        # RecipeJob.perform_now(@meal_plan.id, recipe)
       end
       redirect_to meal_plan_path(@meal_plan)
     else
@@ -34,9 +43,9 @@ class MealPlansController < ApplicationController
 
   def ai_meal_plan(meal_plan)
     diet = meal_plan.diet
-    days = meal_plan.end_date - meal_plan.start_date
+    days = 5
     json_format = {
-
+      "days1": {
             "breakfast":{
               "title":"",
               "ingredients":""
@@ -49,9 +58,14 @@ class MealPlansController < ApplicationController
               "title":"",
               "ingredients":""
             }
-    }.to_s
+          }
+          }.to_s.gsub("\\", "")
 
-    JSON.parse(OpenaiService.new("create a #{@diet} meal plan for #{days} days with recipes in the following json format " + json_format + "each day should have three meals.").call)
+    json_response = OpenaiService.new(
+      "create a #{diet} meal plan for #{days} days with recipes.
+      Only respond with json in the following format: " + json_format
+    ).call
+    JSON.parse(json_response)
   end
 
   private
@@ -89,4 +103,3 @@ end
   #       end
   #     end
   #   end
-  # end
