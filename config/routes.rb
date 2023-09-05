@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :recipes do
-    resources :bookmarks, only: [:create]
-    resources :nutritional_values, only: :create
+      resources :bookmarks, only: :create
+      resources :nutritional_values, only: :create
+      resources :reviews, only: [:new, :create, :destroy]
   end
 
   resources :meal_plans, except: [:edit, :update] do
