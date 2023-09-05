@@ -11,6 +11,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @nutrition = NutritionalValue.where(recipe_id: @recipe)
+    if current_user.has_bookmarked?(@recipe)
+      @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
+    end
   end
 
   def new
@@ -86,6 +89,24 @@ class RecipesController < ApplicationController
 
   def getImage(image_title)
     api_response = OpenaiService.new(image_title).getImageUrl
+  end
+
+  def bookmark
+    @recipe = Recipe.find(params[:id])
+    if current_user.bookmarks.exclude?(@recipe)
+      current_user.bookmarks << @recipe
+      flash[:success] = "Recipe bookmarked."
+    end
+    redirect_to @recipe
+  end
+
+  def unbookmark
+    @recipe = Recipe.find(params[:id])
+    if current_user.bookmarks.include?(@recipe)
+      current_user.bookmarks.delete(@recipe)
+      flash[:success] = "Recipe removed from bookmarks."
+    end
+    redirect_to @recipe
   end
 
   private
