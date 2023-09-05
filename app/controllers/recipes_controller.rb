@@ -124,7 +124,8 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to restaurants_path, status: :see_other
+    flash[:notice] = "Recipe successfully deleted"
+    redirect_to cookbooks_path, status: :see_other
   end
 
   private

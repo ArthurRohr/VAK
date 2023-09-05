@@ -10,6 +10,15 @@
     height: 20rem; /* Make the image take the full height of the container */
     object-fit: cover; /* Maintain aspect ratio and cover the container */
   }
+
+  .delete-recipe {
+    position: absolute;
+    top: 21rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: $header-black;
+    text-decoration: none;
+  }
 }
 
 .recipe-detail {

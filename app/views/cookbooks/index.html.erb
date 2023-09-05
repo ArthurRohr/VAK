@@ -3,6 +3,11 @@
       <% @user_recipes.each do |cookbook| %>
       <% unless cookbook.ai_created %>
         <div class="card card-container rounded-4">
+          <%= link_to "",
+            recipe_path(cookbook),
+            data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "fa-solid fa-trash-can ms-3 delete-recipe"
+          %>
           <%= cl_image_tag cookbook.picture.key, crop: :fill %>
           <div class="card-body">
             <h5 class="card-title"><%= cookbook.name %></h5>
