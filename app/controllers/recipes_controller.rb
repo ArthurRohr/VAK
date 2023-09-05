@@ -2,11 +2,12 @@ require 'json'
 require 'open-uri'
 
 class RecipesController < ApplicationController
+  #create a function to get all the recipes
   def index
     @recipes = Recipe.all
     @recipes = Recipe.search_everywhere(params[:query]) if params[:query].present?
   end
-
+  #create a function to show the recipe
   def show
     @recipe = Recipe.find(params[:id])
     @nutrition = NutritionalValue.where(recipe_id: @recipe)
@@ -14,12 +15,12 @@ class RecipesController < ApplicationController
       @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
     end
   end
-
+  #create a function to get the new recipe
   def new
     @ai = params[:ai]
     @recipe = Recipe.new
   end
-
+  #create a function to create the recipe
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
@@ -28,7 +29,7 @@ class RecipesController < ApplicationController
         file = URI.open(params["img"])
         @recipe.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
     end
-
+    # If the recipe is saved successfully, you will do the following
     if @recipe.save
       # If the params have the :nutritional_values key, you will do the following
       # Instantiate a new nutritional_value model with the values from the params
@@ -49,7 +50,7 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  #create a function to get the ai recipe
   def ai_recipe
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
@@ -85,6 +86,23 @@ class RecipesController < ApplicationController
 
   end
 
+  #create a function to edit the recipe
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  #update the recipe function
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      flash[:success] = "Recipe updated successfully."
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  #create a function to bookmark the recipe
   def bookmark
     @recipe = Recipe.find(params[:id])
     if current_user.bookmarks.exclude?(@recipe)
@@ -93,7 +111,7 @@ class RecipesController < ApplicationController
     end
     redirect_to @recipe
   end
-
+  #create a function to unbookmark the recipe
   def unbookmark
     @recipe = Recipe.find(params[:id])
     if current_user.bookmarks.include?(@recipe)
@@ -102,7 +120,7 @@ class RecipesController < ApplicationController
     end
     redirect_to @recipe
   end
-
+  #create a function to delete the recipe
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -110,11 +128,11 @@ class RecipesController < ApplicationController
   end
 
   private
-
+  #create a function to permit the recipe params
   def recipe_params
     params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :picture)
   end
-
+  #create a function to get the image
   def getImage(image_title)
     api_response = OpenaiService.new(image_title).getImageUrl
   end
