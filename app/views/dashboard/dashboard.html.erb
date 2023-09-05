@@ -1,268 +1,100 @@
+<div class="dashboard">
 
-    <div class="dashboard">
-      <div class="div">
-        <%= link_to new_recipe_path, class: "primary-btn" do %>
-          <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i>
-          <div class="text-wrapper-2">Create Recipe</div>
-        <% end %>
-
-        <div class="btn not-clickable">
-          <div class="text-wrapper-3">Created Recipes</div>
-          <div class="frame">
-            <i class="fa-solid fa-utensils" style="color: #84BD00; font-size: 24px;"></i>
-            <div class="text-wrapper-4"><%= @recipe_count %></div>
-          </div>
-        </div>
-
-        <div class="btn-2 not-clickable ">
-          <div class="text-wrapper-3">Weeks w/ prep-meals</div>
-          <div class="frame">
-            <i class="fa-regular fa-calendar" style="color: #FDC040; font-size: 24px;"></i>
-            <div class="text-wrapper-5">12</div>
-          </div>
-        </div>
-        <div class="btn-3 not-clickable">
-          <div class="text-wrapper-3">Saved Recipes</div>
-          <div class="frame">
-            <i class="fa-solid fa-bookmark" style="color: #E87767; font-size: 24px;"></i>
-            <div class="text-wrapper-6">2.050</div>
-          </div>
-        </div>
-
-
-<%# NEED MEALPLANS FOR THIS  %>
-
-        <div class="btn-4">
-          <div class="frame-2">
-            <div class="text-wrapper-3">Today’s prep-meal dishes</div>
-            <p class="p"><span class="span">See more</span> <span class="text-wrapper-7"> →</span></p>
-          </div>
-          <div class="text-wrapper-8">Dishes</div>
-          <div class="frame-3">
-            <div class="frame-4">
-              <div class="ingredient">
-                <div class="lemon"><img class="vector-6" src="img/vector-15.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Apple w/ peanut butter</div>
-                  <div class="calories-2">Snack | 10:00 PM</div>
-                </div>
-              </div>
-              <div class="ingredient">
-                <div class="leaf-solid"><img class="vector-7" src="img/vector-7.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Broccoli Soup</div>
-                  <div class="calories-2">Starters | 1:00 PM</div>
-                </div>
-              </div>
-              <div class="ingredient">
-                <div class="drumstick-bite"><img class="vector-8" src="img/image.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Yogurt Chicken</div>
-                  <div class="calories-2">Lunch | 1:00 PM</div>
-                </div>
-              </div>
-            </div>
-            <div class="frame-4">
-              <div class="ingredient">
-                <div class="lemon"><img class="vector-6" src="img/vector.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Strawberries</div>
-                  <div class="calories-2">Snack | 4:00 PM</div>
-                </div>
-              </div>
-              <div class="ingredient">
-                <div class="leaf-solid"><img class="vector-7" src="img/vector-18.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Broccoli Soup</div>
-                  <p class="calories-2">Tues, Starters | 7:30 PM</p>
-                </div>
-              </div>
-              <div class="ingredient">
-                <div class="leaf-solid"><img class="vector-7" src="img/vector-10.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Pesto Salad</div>
-                  <p class="calories-2">Tues, Dinner | 7:30 PM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-<%# NEED MEALPLANS FOR THIS  %>
-
-
-<!-- app/views/recipes/user_recent_recipes.html.erb -->
-<div class="btn-5">
-  <div class="frame-2">
-    <div class="text-wrapper-3">Favourites</div>
-    <p class="p"><span class="span">See more</span> <span class="text-wrapper-7"> →</span></p>
-  </div>
-  <div class="text-wrapper-8">Last saves</div>
-
-  <% @user_recipes.each do |recipe| %>
-    <div class="ingredient">
-    <div class="drumstick-bite"><i class="fa-solid fa-bowl-rice" style="color: #808080;"></i>
-      <div class="details">
-        <div class="calories-3"><%= recipe.name %></div>
-        </div>
-      </div>
+  <div class="container my-2">
+    <div class="container d-flex justify-content-end mb-5">
+      <%= link_to new_recipe_path, class: "btn-create mt-4 me-3" do %>
+        <i class="fa-solid fa-utensils"></i>
+        <p>Create a Recipe</p>
+      <% end %>
     </div>
-  <% end %>
-</div>
 
-
-
-<%#
-          <div class="ingredient">
-            <div class="drumstick-bite"><img class="vector-8" src="img/vector-12.svg" /></div>
-            <div class="details">
-              <div class="calories-3">Yogurt Chicken</div>
-              <div class="calories-2">Lunch | Dinner</div>
-            </div>
-          </div>
-          <div class="ingredient">
-            <div class="drumstick-bite"><img class="vector-8" src="img/vector-5.svg" /></div>
-            <div class="details">
-              <div class="calories-3">Mustard Chicken</div>
-              <div class="calories-2">Lunch | Dinner</div>
-            </div>
-          </div>
-          <div class="ingredient">
-            <div class="leaf-solid"><img class="vector-7" src="img/vector-16.svg" /></div>
-            <div class="details">
-              <div class="calories-3">Broccoli Soup</div>
-              <div class="calories-2">Starters</div>
-            </div>
-          </div>
-          <div class="ingredient">
-            <div class="leaf-solid"><img class="vector-7" src="img/vector-17.svg" /></div>
-            <div class="details">
-              <div class="calories-3">Broccoli Soup</div>
-              <div class="calories-2">Starters</div>
-            </div>
-          </div>
-          <div class="ingredient">
-            <div class="drumstick-bite"><img class="vector-8" src="img/vector-22.svg" /></div>
-            <div class="details">
-              <div class="calories-3">Tofu Parmegiano</div>
-              <div class="calories-2">Lunch | Dinner</div>
-            </div>
-          </div>
-        </div> %>
-
-
-<%# INSERT DIAGRAMM HERE %>
-
-
-        <div class="overlap-group">
-          <div class="btn-6">
-            <div class="frame-2">
-              <div class="text-wrapper-3">Today’s prep-meal schedule</div>
-              <p class="p"><span class="span">View calendar</span> <span class="text-wrapper-7"> →</span></p>
-            </div>
-            <div class="text-wrapper-8">Calories</div>
-            <div class="graphic">
-              <div class="calories-4">
-                <div class="calories-5">1.200</div>
-                <div class="calories-6">1.000</div>
-                <div class="calories-6">800</div>
-                <div class="calories-6">600</div>
-                <div class="calories-6">400</div>
-                <div class="calories-6">200</div>
-                <div class="calories-6">0</div>
-              </div>
-              <div class="lines">
-                <img class="line" src="img/line-39.svg" />
-                <img class="line" src="img/line-44.svg" />
-                <img class="line" src="img/line-46.svg" />
-                <img class="line" src="img/line-47.svg" />
-                <img class="line" src="img/line-41.svg" />
-                <img class="line" src="img/line-48.svg" />
-                <img class="line" src="img/line-43.svg" />
-              </div>
-            </div>
-            <div class="frame-5">
-              <div class="calories-7">Time</div>
-              <div class="frame-6">
-                <div class="calories-5">8:00</div>
-                <div class="calories-5">10:00</div>
-                <div class="calories-5">12:00</div>
-                <div class="calories-5">14:00</div>
-                <div class="calories-5">16:00</div>
-                <div class="calories-5">18:00</div>
-                <div class="calories-5">20:00</div>
-              </div>
-            </div>
-          </div>
-          <div class="calories-wrapper"><div class="calories-8">Breakfast</div></div>
-          <div class="div-wrapper"><div class="calories-9">Lunch</div></div>
-          <div class="frame-7"><div class="calories-10">Snack</div></div>
-          <div class="frame-8"><div class="calories-10">Snack</div></div>
-          <div class="frame-9"><div class="calories-11">Dinner</div></div>
-        </div>
-        <div class="btn-7">
-          <div class="frame-2">
-            <div class="text-wrapper-3">Shopping List this week</div>
-            <p class="p"><span class="span">See more</span> <span class="text-wrapper-7"> →</span></p>
-          </div>
-          <div class="text-wrapper-8">Ingredients</div>
-          <div class="ingredients">
-            <div class="column">
-              <div class="ingredient-2">
-                <div class="leaf-solid"><img class="vector-7" src="img/vector-21.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Spinach</div>
-                  <div class="calories-2">Vegetable</div>
-                </div>
-              </div>
-              <div class="ingredient-2">
-                <div class="drumstick-bite"><img class="vector-8" src="img/vector-14.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Chicken</div>
-                  <div class="calories-2">Protein</div>
-                </div>
-              </div>
-              <div class="ingredient-2">
-                <div class="drumstick-bite"><img class="vector-8" src="img/vector-8.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Egg</div>
-                  <div class="calories-2">Protein</div>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="ingredient-2">
-                <div class="lemon"><img class="vector-6" src="img/vector-11.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Strawberries</div>
-                  <div class="calories-2">Fruit</div>
-                </div>
-              </div>
-              <div class="ingredient-2">
-                <div class="leaf-solid"><img class="vector-7" src="img/vector-19.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Broccoli</div>
-                  <div class="calories-2">Vegetable</div>
-                </div>
-              </div>
-              <div class="ingredient-2">
-                <div class="lemon"><img class="vector-6" src="img/vector-13.svg" /></div>
-                <div class="details">
-                  <div class="calories-3">Apple</div>
-                  <div class="calories-2">Fruit</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-wrapper-9">Hey Arthur!</div>
-        <div class="text-wrapper-10" id="current-date">
-          <script>
+    <div class="d-flex m-4 gap-5">
+      <div class="greeting">
+        <h2>Hey Arthur!<h2>
+        <div id="current-date">
+          <%= javascript_tag do %>
             const currentDate = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = currentDate.toLocaleDateString('en-US', options);
             document.getElementById('current-date').textContent = formattedDate;
-          </script>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="counter-card">
+        <h3>Created Recipes</h3>
+        <div class="frame">
+          <i class="fa-solid fa-utensils" style="color: #84BD00; font-size: 2rem;"></i>
+          <h4 style="color: #84BD00;"><%= @recipe_count %></h4>
+        </div>
+      </div>
+
+      <div class="counter-card">
+        <h3>Weeks w/ prep-meals</h3>
+        <div class="frame">
+          <i class="fa-regular fa-calendar" style="color: #FDC040; font-size: 2rem;"></i>
+          <h4 style="color: #FDC040;"><%= @meal_plan_count %></h4>
+        </div>
+      </div>
+
+      <div class="counter-card">
+        <h3>Saved Recipes</h3>
+        <div class="frame">
+          <i class="fa-solid fa-bookmark" style="color: #E87767; font-size: 2rem;"></i>
+          <h4 style="color: #E87767;"><%= @bookmarks_count %></h4>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container d-flex my-5">
+    <div class="list-card mx-4">
+      <div class="d-flex justify-content-between">
+        <h3>My Recipes</h3>
+        <a href="">See more →</a>
+      </div>
+      <p>Last saves<p>
+      <% @recipes.reverse.take(5).each do |recipe| %>
+        <div class="d-flex align-items-center my-3">
+          <div class="img-recipe-avatar">
+            <img src=<%= recipe.picture %> alt="...">
+          </div>
+          <div class="calories-3 mx-3"><%= recipe.name %></div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="list-card mx-4">
+      <div class="d-flex justify-content-between">
+        <h3>Meal Plans</h3>
+        <a href="">See more →</a>
+      </div>
+      <p>Last saves</p>
+      <% @meal_plans.reverse.take(5).each do |recipe| %>
+        <div class="d-flex align-items-center my-3">
+          <div class="img-recipe-avatar">
+            <img src=<%= recipe.picture %> alt="...">
+          </div>
+          <div class="calories-3 mx-3"><%= recipe.name %></div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="list-card mx-4">
+      <div class="d-flex justify-content-between">
+        <h3>Favourites</h3>
+        <a href="">See more →</a>
+      </div>
+      <p>Last saves</p>
+      <% @user_recipes.reverse.take(5).each do |recipe| %>
+        <div class="d-flex align-items-center my-3">
+          <div class="img-recipe-avatar">
+            <img src=<%= recipe.picture %> alt="...">
+          </div>
+          <div class="calories-3 mx-3"><%= recipe.name %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
