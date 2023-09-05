@@ -109,7 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_091905) do
     t.text "comment"
     t.integer "rating"
     t.bigint "user_id", null: false
-    t.bigint "recipeff_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
