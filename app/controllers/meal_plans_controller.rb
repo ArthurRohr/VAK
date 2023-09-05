@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class MealPlansController < ApplicationController
 
   def index
@@ -20,6 +22,8 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
     response = ai_meal_plan(@meal_plan)
+    file = URI.open(OpenaiService.new(meal_plan_params[:diet]).getImageUrl)
+    @meal_plan.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
     if @meal_plan.save
       # recipe-_hash:
       # {"breakfast"=>{"title"=>"Vegan Pancakes", "ingredients"=>"1 cup flour, 1 tablespoon sugar, 2 teaspoons baking powder, 1/2 teaspoon salt, 1 cup almond milk, 1 tablespoon vegetable oil"}, "lunch"=>{"title"=>"Chickpea Salad Sandwich", "ingredients"=>"1 can chickpeas, 1/4 cup vegan mayo, 1/4 cup diced celery, 1/4 cup diced red onion, 1 tablespoon lemon juice, salt and pepper to taste, bread slices"}, "dinner"=>{"title"=>"Vegan Lentil Curry", "ingredients"=>"1 cup lentils, 1 onion (diced), 2 cloves garlic (minced), 1 tablespoon curry powder, 1 can diced tomatoes, 1 can coconut milk, salt and pepper to taste, cooked rice"}}
@@ -66,6 +70,7 @@ class MealPlansController < ApplicationController
       Only respond with json in the following format: " + json_format
     ).call
     JSON.parse(json_response)
+
   end
 
   private
@@ -73,6 +78,7 @@ class MealPlansController < ApplicationController
   def meal_plan_params
     params.require(:meal_plan).permit(:name, :days, :diet)
   end
+
 end
 
   # def get_new_plan_api

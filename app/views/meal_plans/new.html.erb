@@ -2,6 +2,6 @@
 <%= simple_form_for(@meal_plan) do |f| %>
   <%= f.input :name %>
   <%= f.input :diet %>
-  <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 'Any' %>
+  <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 0 %>
   <%= f.button :submit %>
   <% end %>
