@@ -24,7 +24,7 @@ class OpenaiService
 
 
   def getImageUrl
-    response = client.images.generate(parameters: { prompt: @prompt, size: "256x256" })
+    response = client.images.generate(parameters: { prompt: @prompt, size: "1024x1024" })
     response.dig("data", 0, "url")
   end
 end

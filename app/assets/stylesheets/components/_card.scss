@@ -23,3 +23,13 @@
   right: 1rem;
   font-size: 1.5rem;
 }
+
+
+.img-container {
+  overflow: hidden;
+  img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 30rem; /* Make the image take the full height of the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+}
