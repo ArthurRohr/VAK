@@ -7,15 +7,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :recipes do
-      resources :bookmarks, only: :create
-      resources :nutritional_values, only: :create
+    resources :bookmarks, only: [:create]
+    resources :nutritional_values, only: :create
   end
 
   resources :meal_plans, except: [:edit, :update] do
     resources :meal_plan_recipes, only: :create
   end
 
-  resources :bookmarks, only: :destroy
+  resources :bookmarks, only: [:destroy, :index]
   get '/ai_recipe', to: 'recipes#ai_recipe'
 
 

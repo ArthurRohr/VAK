@@ -1,5 +1,4 @@
 <div class="dashboard">
-
   <div class="container my-2">
     <div class="container d-flex justify-content-end mb-5">
       <%= link_to new_recipe_path, class: "btn-create mt-4 me-3" do %>
@@ -10,14 +9,9 @@
 
     <div class="d-flex m-4 gap-5">
       <div class="greeting">
-        <h2>Hey Arthur!<h2>
+        <h2>Hey <%= current_user.first_name %>!<h2>
         <div id="current-date">
-          <%= javascript_tag do %>
-            const currentDate = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = currentDate.toLocaleDateString('en-US', options);
-            document.getElementById('current-date').textContent = formattedDate;
-          <% end %>
+          <%= Time.now.strftime("%d %B, %Y") %>
         </div>
       </div>
 
@@ -57,9 +51,9 @@
       <% @recipes.reverse.take(5).each do |recipe| %>
         <div class="d-flex align-items-center my-3">
           <div class="img-recipe-avatar">
-            <img src=<%= recipe.picture %> alt="...">
+            <%= cl_image_tag recipe.picture.key, crop: :fill %>
           </div>
-          <div class="calories-3 mx-3"><%= recipe.name %></div>
+          <h5 class="ms-3"><%= recipe.name %></h5>
         </div>
       <% end %>
     </div>
@@ -73,9 +67,9 @@
       <% @meal_plans.reverse.take(5).each do |recipe| %>
         <div class="d-flex align-items-center my-3">
           <div class="img-recipe-avatar">
-            <img src=<%= recipe.picture %> alt="...">
+            <%= cl_image_tag recipe.picture.key, crop: :fill %>
           </div>
-          <div class="calories-3 mx-3"><%= recipe.name %></div>
+          <h5 class="ms-3"><%= recipe.name %></h5>
         </div>
       <% end %>
     </div>
@@ -89,9 +83,9 @@
       <% @user_recipes.reverse.take(5).each do |recipe| %>
         <div class="d-flex align-items-center my-3">
           <div class="img-recipe-avatar">
-            <img src=<%= recipe.picture %> alt="...">
+            <%= cl_image_tag recipe.picture.key, crop: :fill %>
           </div>
-          <div class="calories-3 mx-3"><%= recipe.name %></div>
+          <h5 class="ms-3"><%= recipe.name %></h5>
         </div>
       <% end %>
     </div>
