@@ -18,7 +18,7 @@
           <li class="list-inline-item pe-3"><i class="fa-solid fa-robot p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> AI Generated</li>
         <% end %>
         <li class="list-inline-item pe-3">
-          <% unless @recipe.user_id == current_user && ai_created == false %>
+          <% unless @recipe.user == current_user && @recipe.ai_created == false %>
             <% if current_user.has_bookmarked?(@recipe) %>
               <%= link_to bookmark_path(@bookmark), data: { turbo_method: :delete }, class: "btn" do %>
                 <i class="fa-solid fa-bookmark" style="color: #E87767; font-size: 28px;"></i>

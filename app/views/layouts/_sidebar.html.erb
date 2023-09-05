@@ -21,7 +21,9 @@
         <i class="fa-regular fa-calendar"><p>Meal Plans</p></i>
       </div>
       <div class="icon-container text-center">
-        <i class="fa-solid fa-book-open"><p>My Cookbook</p></i>
+        <%= link_to cookbooks_path, class: "nav-link" do %>
+          <i class="fa-solid fa-book-open <%= 'active' if current_page?(cookbooks_path) %>"><p class="<%= 'active' if current_page?(cookbooks_path) %>">My Cookbook</p></i>
+        <% end %>
       </div>
       <div class="icon-container text-center">
         <%= link_to bookmarks_path, class: "nav-link" do %>
