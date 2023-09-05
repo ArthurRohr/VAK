@@ -1,7 +1,7 @@
 <h1>Generate your plan</h1>
 <%= simple_form_for(@meal_plan) do |f| %>
   <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <%= f.input :diet %>
+  <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 'Any' %>
   <%= f.button :submit %>
+  <% end %>

@@ -40,6 +40,22 @@
     background-color: $green-primary-light;
     border: 1px solid $green-primary;
     color: $green-primary;
+    
+.btn-gray {
+  background-color: $text-gray;
+  color: $light-gray;
+  border: 1px solid $light-gray;
+  font-family: $body-font;
+  font-size: 1.2rem;
+  transition: 0.7s ease;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+
+  &:hover{
+    background-color: $light-gray;
+    color: $text-gray;
+    border: 1px solid $text-gray;
     transition: 0.7s ease;
   }
 }

@@ -15,7 +15,7 @@
   <div class="container my-4 grid-container">
     <% @recipes.each do |recipe| %>
       <div class="card card-container rounded-4">
-        <img src=<%= recipe.picture %> class="card-img-top" alt="...">
+        <%= cl_image_tag recipe.picture.key, crop: :fill %>
         <div class="card-body">
           <h5 class="card-title"><%= recipe.name %></h5>
           <% if recipe.ai_created %>

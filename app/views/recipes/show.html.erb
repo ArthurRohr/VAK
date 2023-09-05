@@ -2,7 +2,7 @@
 
   <div class="p-3">
     <div class="container">
-      <img src=<%= @recipe.picture %> class="rounded-4" alt="..." style="width: 100%; height: 500px; object-fit: cover;">
+      <%= cl_image_tag @recipe.picture.key, crop: :fill %>
       <h1 class="pt-5"><%= @recipe.name %></h1>
     </div>
 
@@ -54,6 +54,14 @@
         <li>Cholesterol : <%= @nutrition[0]["cholesterol"].to_i %></li>
       </ul>
     </div>
+    <% end %>
+
+    <% unless @recipe.user_id == current_user && ai_created == false %>
+      <% if current_user.has_bookmarked?(@recipe) %>
+        <%= link_to "Remove Bookmark", bookmark_path(@bookmark), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Bookmark",  recipe_bookmarks_path(@recipe), data: {turbo_method: :post}, class: "btn btn-primary" %>
+      <% end %>
     <% end %>
 
 
