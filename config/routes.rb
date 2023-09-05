@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :meal_plan_recipes, only: :create
   end
 
-  resources :bookmarks, only: :destroy
+  resources :bookmarks, only: [:destroy, :index]
   get '/ai_recipe', to: 'recipes#ai_recipe'
 
 

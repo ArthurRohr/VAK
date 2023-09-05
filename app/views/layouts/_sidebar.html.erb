@@ -24,6 +24,11 @@
         <i class="fa-solid fa-book-open"><p>My Cookbook</p></i>
       </div>
       <div class="icon-container text-center">
+        <%= link_to bookmarks_path, class: "nav-link" do %>
+          <i class="fa-solid fa-bookmark <%= 'active' if current_page?(bookmarks_path) %>"><p class="<%= 'active' if current_page?(bookmarks_path) %>">My Bookmarks</p></i>
+        <% end %>
+      </div>
+      <div class="icon-container text-center">
         <%= link_to edit_user_registration_path, class: "nav-link" do %>
           <i class="fa-solid fa-gear <%= 'active' if current_page?(edit_user_registration_path) %>"><p class="<%= 'active' if current_page?(edit_user_registration_path) %>">Settings</p></i>
         <% end %>

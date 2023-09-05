@@ -1,6 +1,4 @@
 .dashboard {
-  background-color: $background-gray;
-  justify-content: center;
   width: 100%;
 }
 
@@ -88,7 +86,21 @@
   }
 
   .img-recipe-avatar {
-    width: 3rem;
+    width: 4rem;
     border-radius: 50%;
+    overflow: hidden; /* Ensure the image is clipped within the rounded div */
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Use 'cover' to fill the div while maintaining aspect ratio */
+    }
+  }
+
+  h5 {
+    font-family: $body-font, Helvetica;
+    font-weight: 500;
+    color: $header-black;
+    font-size: 1rem;
   }
 }
