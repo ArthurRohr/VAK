@@ -80,12 +80,12 @@
         <a href="">See more →</a>
       </div>
       <p>Last saves</p>
-      <% @user_recipes.reverse.take(5).each do |recipe| %>
+      <% @bookmarks.reverse.take(5).each do |bookmark| %>
         <div class="d-flex align-items-center my-3">
           <div class="img-recipe-avatar">
-            <%= cl_image_tag recipe.picture.key, crop: :fill %>
+            <%= cl_image_tag bookmark.recipe.picture.key, crop: :fill %>
           </div>
-          <h5 class="ms-3"><%= recipe.name %></h5>
+          <h5 class="ms-3"><%= bookmark.recipe.name %></h5>
         </div>
       <% end %>
     </div>
