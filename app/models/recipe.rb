@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
 
   CUISINE = ["Italian", "Indian", "Mexican", "Japanese", "Chinese", "French", "Thai", "Mediterranean", "American", "Greek"]
   DIET = ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free", "Keto", "Paleo"]
+  TIME = ["15 mins", "30 mins", "45 mins", "60 mins"]
 
   include PgSearch::Model
   pg_search_scope :search_everywhere,

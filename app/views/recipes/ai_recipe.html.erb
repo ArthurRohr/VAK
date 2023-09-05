@@ -18,7 +18,6 @@
               <%= f.input :cuisine, input_html: {value: @cuisine},:as => :hidden %>
               <%= f.input :diet, input_html: {value: @diet},:as => :hidden%>
               <%= hidden_field_tag 'img', @imgUrl  %>
-
               <%= hidden_field_tag 'nutrition', @nutrition  %>
               <%= f.submit "Save this Recipe", class: "button-form btn-signup mt-1" %>
           <% end %>
@@ -61,31 +60,31 @@
 
     <div class="container bg-white rounded-4 mt-3 p-5">
       <h4 class="pb-3">Nutritional Values</h4>
-      <% @nutrition["calories"] = 0 if @nutrition["calories"].length==""%>
+      <% @nutrition["calories"] = 0 if @nutrition["calories"].empty? %>
       <p>Calories : <%= @nutrition["calories"] %></p>
 
-      <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].length=="" %>
+      <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].empty? %>
       <p>Total Fat : <%= @nutrition["total_fat"] %></p>
 
-      <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].length=="" %>
+      <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].empty? %>
       <p>Saturated Fat : <%= @nutrition["saturated_fat"] %></p>
 
-      <% @nutrition["carbs"] = 0 if @nutrition["carbs"].length=="" %>
+      <% @nutrition["carbs"] = 0 if @nutrition["carbs"].empty? %>
       <p>Carbohydrate : <%= @nutrition["carbs"] %></p>
 
-      <% @nutrition["protein"] = 0 if @nutrition["protein"].length=="" %>
+      <% @nutrition["protein"] = 0 if @nutrition["protein"].empty? %>
       <p>Protien : <%= @nutrition["protein"] %></p>
 
-      <% @nutrition["sodium"] = 0 if @nutrition["sodium"].length=="" %>
+      <% @nutrition["sodium"] = 0 if @nutrition["sodium"].empty? %>
       <p>Sodium : <%= @nutrition["sodium"] %></p>
 
-      <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].length=="" %>
+      <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].empty? %>
       <p>Fiber : <%= @nutrition["dietary_fiber"] %></p>
 
-      <% @nutrition["sugar"] = 0 if @nutrition["sugar"].length=="" %>
+      <% @nutrition["sugar"] = 0 if @nutrition["sugar"].empty? %>
       <p>Sugar: <%= @nutrition["sugar"] %></p>
 
-      <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].length=="" %>
+      <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].empty? %>
       <p>Cholestrol : <%=  @nutrition["cholesterol"] %></p>
 
       <% @nutrition = {
