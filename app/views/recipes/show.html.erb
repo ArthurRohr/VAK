@@ -59,10 +59,10 @@
     <% end %>
 
     <% unless @recipe.user_id == current_user && ai_created == false %>
-      <% unless current_user.bookmarks.include?(@recipe) %>
-        <%= link_to "Bookmark",new_recipe_bookmark_path(@recipe), method: :post, class: "btn btn-primary" %>
+      <% if current_user.has_bookmarked?(@recipe) %>
+        <%= link_to "Remove Bookmark", bookmark_path(@bookmark), data: { turbo_method: :delete }, class: "btn btn-danger" %>
       <% else %>
-        <%= link_to "Remove Bookmark", recipe_bookmark_path(@recipe), method: :delete, class: "btn btn-danger" %>
+        <%= link_to "Bookmark",  recipe_bookmarks_path(@recipe), data: {turbo_method: :post}, class: "btn btn-primary" %>
       <% end %>
     <% end %>
 

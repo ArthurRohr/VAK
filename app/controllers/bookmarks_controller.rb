@@ -4,7 +4,6 @@ class BookmarksController < ApplicationController
     redirect_to recipe_path(params[:recipe_id])
   end
 
-
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @bookmark = Bookmark.new
@@ -21,6 +20,12 @@ class BookmarksController < ApplicationController
   #   user = User.find(current_user.id)
   #   bookmarked_recipes = user.bookmarked_recipes
   # end
+
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to recipe_path(@bookmark.recipe)
+  end
 end
 
 # @recipe = Recipe.find(params[:recipe_id])
