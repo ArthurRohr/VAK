@@ -15,6 +15,17 @@
         <% if @recipe.ai_created %>
           <li class="list-inline-item pe-3"><i class="fa-solid fa-robot p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> AI Generated</li>
         <% end %>
+        <li class="list-inline-item pe-3">        <% unless @recipe.user_id == current_user && ai_created == false %>
+      <% if current_user.has_bookmarked?(@recipe) %>
+        <%= link_to bookmark_path(@bookmark), data: { turbo_method: :delete }, class: "btn" do %>
+        <i class="fa-solid fa-bookmark" style="color: #E87767; font-size: 28px;"></i>
+        <% end %>
+      <% else %>
+        <%= link_to recipe_bookmarks_path(@recipe), data: { turbo_method: :post }, class: "btn" do %>
+          <i class="fa-regular fa-bookmark" style="color: #E87767; font-size: 28px;"></i>
+        <% end %>
+      <% end %>
+    <% end %></li>
       </ul>
     </div>
 
@@ -54,14 +65,6 @@
         <li>Cholesterol : <%= @nutrition[0]["cholesterol"].to_i %></li>
       </ul>
     </div>
-    <% end %>
-
-    <% unless @recipe.user_id == current_user && ai_created == false %>
-      <% if current_user.has_bookmarked?(@recipe) %>
-        <%= link_to "Remove Bookmark", bookmark_path(@bookmark), data: { turbo_method: :delete }, class: "btn btn-danger" %>
-      <% else %>
-        <%= link_to "Bookmark",  recipe_bookmarks_path(@recipe), data: {turbo_method: :post}, class: "btn btn-primary" %>
-      <% end %>
     <% end %>
 
 
