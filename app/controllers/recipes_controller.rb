@@ -1,9 +1,7 @@
 require 'json'
 require 'open-uri'
 
-
 class RecipesController < ApplicationController
-
   def index
     @recipes = Recipe.all
     @recipes = Recipe.search_everywhere(params[:query]) if params[:query].present?
@@ -69,7 +67,7 @@ class RecipesController < ApplicationController
         "cooking_time": "",
         "servings": "",
         "cuisine": "",
-        "nutrition": [:calories,:total_fat,:saturated_fat,:sodium,:carbs,:dietary_fiber,:sugar,:protien,:cholestrol]
+        "nutrition": [:calories,:total_fat,:saturated_fat,:sodium,:carbs,:dietary_fiber,:sugar,:protein,:cholesterol]
         }
       }'.gsub('\n', '')
 
