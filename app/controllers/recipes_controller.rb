@@ -28,6 +28,7 @@ class RecipesController < ApplicationController
         @recipe.ai_created = 1
         file = URI.open(params["img"])
         @recipe.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
+
     end
     # If the recipe is saved successfully, you will do the following
     if @recipe.save
@@ -38,11 +39,15 @@ class RecipesController < ApplicationController
 
       if params[:nutrition]
 
-
         @nutrition = params[:nutrition].split.each_slice(2).to_a.to_h
         @nutrition = NutritionalValue.new(@nutrition)
         @nutrition.recipe = @recipe
         @nutrition.save
+
+        @bookmark = Bookmark.new
+        @bookmark.recipe = @recipe
+        @bookmark.user = current_user
+        @bookmark.save
       end
 
       redirect_to recipe_path(@recipe)
