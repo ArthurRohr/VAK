@@ -132,8 +132,8 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.4.2)
       sassc (~> 2.0)
-    globalid (1.1.0)
-      activesupport (>= 5.0)
+    globalid (1.2.0)
+      activesupport (>= 6.1)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -146,8 +146,9 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.7.4)
-      reline (>= 0.3.6)
+    irb (1.8.1)
+      rdoc
+      reline (>= 0.3.8)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -181,17 +182,16 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
-    nokogiri (1.15.4-arm64-darwin)
-    nokogiri (1.15.4-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.5.3)
+    pg (1.5.4)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     popper_js (2.11.8)
+    psych (5.1.0)
+      stringio
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
@@ -228,8 +228,8 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    redis (5.0.7)
-      redis-client (>= 0.9.0)
+    rdoc (6.5.0)
+      psych (>= 4.0.0)
     redis-client (0.16.0)
       connection_pool
     regexp_parser (2.8.1)
@@ -277,6 +277,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
+    stringio (3.0.8)
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.4.0)
@@ -309,8 +310,6 @@ GEM
     zeitwerk (2.6.11)
 
 PLATFORMS
-  arm64-darwin-22
-  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -331,7 +330,6 @@ DEPENDENCIES
   pg_search
   puma (~> 5.0)
   rails (~> 7.0.7)
-  redis
   ruby-openai
   sassc-rails
   selenium-webdriver
