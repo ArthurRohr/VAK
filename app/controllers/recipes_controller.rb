@@ -85,11 +85,6 @@ class RecipesController < ApplicationController
 
   end
 
-
-  def getImage(image_title)
-    api_response = OpenaiService.new(image_title).getImageUrl
-  end
-
   def bookmark
     @recipe = Recipe.find(params[:id])
     if current_user.bookmarks.exclude?(@recipe)
@@ -108,9 +103,19 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to restaurants_path, status: :see_other
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :picture)
+  end
+
+  def getImage(image_title)
+    api_response = OpenaiService.new(image_title).getImageUrl
   end
 end

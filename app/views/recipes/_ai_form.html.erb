@@ -2,7 +2,7 @@
   <h2 class="pb-3">Generate Recipe</h2>
   <%= simple_form_for :recipes, url:  ai_recipe_path, method: :get do |f| %>
     <%= f.input :ingredients %>
-    <%= f.input :time %>
+    <%= f.input :time, as: :select, collection: Recipe::TIME, selected: "15 mins" %>
     <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, prompt: 'Any' %>
     <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
     <%= f.submit "Submit", class: "btn-signup" %>
