@@ -1,4 +1,4 @@
-require "redis"
+# require "redis"
 
 $redis = Redis.new(password: ENV["REDIS_PASSWORD"])
 url = ENV["REDISCLOUD_URL"]
