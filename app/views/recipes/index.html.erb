@@ -23,9 +23,9 @@
           <% end %>
         </div>
         <ul class="list-group">
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> <strong>Time:</strong> <%= recipe.time %> minutes</li>
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> <strong>Cuisine:</strong> <%= recipe.cuisine %></li>
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> <strong>Diet:</strong> <%= recipe.diet %></li>
+          <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> <%= recipe.time %> minutes</li>
+          <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> <%= recipe.cuisine %></li>
+          <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> <%= recipe.diet %></li>
           <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(recipe), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
         </ul>
       </div>
