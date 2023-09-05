@@ -21,9 +21,11 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
-    @recipe.ai_created = 1 if params[:nutrition]
-    file = URI.open(params["img"])
-    @recipe.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
+    if params[:nutrition]
+        @recipe.ai_created = 1
+        file = URI.open(params["img"])
+        @recipe.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
+    end
 
     if @recipe.save
       # If the params have the :nutritional_values key, you will do the following
@@ -89,6 +91,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet)
+    params.require(:recipe).permit(:name, :ingredients, :instructions, :time, :cuisine, :diet, :picture)
   end
 end
