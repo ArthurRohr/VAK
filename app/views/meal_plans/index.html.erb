@@ -1,1 +1,7 @@
-<li>Hello</li>
+<%# <%= render "layouts/navbar" %>
+    <% @meal_plans.each do |meal| %>
+      <li><%= meal.name %></li>
+      <% unless meal.picture.key.nil? %>
+        <li><%= cl_image_tag meal.picture.key, crop: :fill %></li>
+      <% end %>
+    <% end %>

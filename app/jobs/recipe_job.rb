@@ -1,3 +1,4 @@
+require 'open-uri'
 class RecipeJob < ApplicationJob
   queue_as :default
 
@@ -46,13 +47,24 @@ class RecipeJob < ApplicationJob
     json_response = OpenaiService.new(prompt).call
     recipe_response = JSON.parse(json_response)
 
+    file = URI.open(OpenaiService.new(recipe["title"]).getImageUrl)
+
     # Parse the response and createa a new meal
     day_number = response.keys
 
     # ingredients = recipe_response["recipe"]["ingredients"].join(",")
     ingredients = recipe["ingredients"]
     instructions = recipe_response["recipe"]["instructions"].join(" ")
-    recipe = Recipe.new(name: recipe["title"], ingredients: ingredients, instructions: instructions, time: recipe_response["recipe"]["cooking_time"], servings: recipe_response["recipe"]["servings"], diet: meal_plan.diet, cuisine: recipe_response["recipe"]["cuisine"], ai_created: true)
+    recipe = Recipe.new(name: recipe["title"],
+      ingredients: ingredients, instructions: instructions,
+      time: recipe_response["recipe"]["cooking_time"],
+      servings: recipe_response["recipe"]["servings"],
+      diet: meal_plan.diet, cuisine: recipe_response["recipe"]["cuisine"],
+      ai_created: true,
+
+      )
+    recipe.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
+
     recipe.user = current_user
     recipe.save
 
@@ -78,4 +90,10 @@ class RecipeJob < ApplicationJob
       recipe_id: recipe.id, day_number: day_number.first, meal_time: day)
     meal_plan_recipe.save
   end
+
+
+  def getImage(image_title)
+    api_response = OpenaiService.new(image_title).getImageUrl
+  end
+
 end

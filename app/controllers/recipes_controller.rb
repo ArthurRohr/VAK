@@ -1,6 +1,7 @@
 require 'json'
 require 'open-uri'
 
+
 class RecipesController < ApplicationController
 
   def index
