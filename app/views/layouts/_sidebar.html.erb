@@ -18,7 +18,9 @@
         <% end %>
       </div>
       <div class="icon-container text-center">
-        <i class="fa-regular fa-calendar"><p>Meal Plans</p></i>
+        <%= link_to meal_plans_path, class: "nav-link" do %>
+          <i class="fa-regular fa-calendar"><p>Meal Plans</p></i>
+        <% end %>
       </div>
       <div class="icon-container text-center">
         <i class="fa-solid fa-book-open"><p>My Cookbook</p></i>
