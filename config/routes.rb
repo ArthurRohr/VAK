@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :bookmarks, only: [:destroy, :index]
   get '/ai_recipe', to: 'recipes#ai_recipe'
 
-
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
   get '/dashboard', to: 'dashboard#dashboard'
+  get '/cookbooks', to: 'cookbooks#index', as: 'cookbooks'
 end
