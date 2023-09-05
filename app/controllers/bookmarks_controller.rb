@@ -16,10 +16,10 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # def index
-  #   user = User.find(current_user.id)
-  #   bookmarked_recipes = user.bookmarked_recipes
-  # end
+  def index
+    @bookmarks = current_user.bookmarks
+  end
+
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
