@@ -1,5 +1,5 @@
-<div class="container d-flex justify-content-center my-5">
-  <div class="p-3">
+<div class="container w-100 d-flex justify-content-center my-5">
+  <div class="w-100 p-3">
 
     <div class="container">
       <div class="img-container rounded-4">
@@ -55,18 +55,52 @@
     <!-- nutrition -->
     <% if !@nutrition.empty? %>
     <div class="bg-white rounded-4 mt-3 p-5">
-      <h4>Nutrition</h4>
-      <ul class="list-group rounded-4 pt-3" style="list-style: none;">
-        <li>Calories : <%= @nutrition[0]["calories"].to_i %></li>
-        <li>Total Fat : <%= @nutrition[0]["total_fat"].to_i %></li>
-        <li>Saturated Fat : <%= @nutrition[0]["saturated_fat"].to_i %> </li>
-        <li>sodium : <%= @nutrition[0]["sodium"].to_i %></li>
-        <li>Carbohydrate : <%= @nutrition[0]["carbs"].to_i %></li>
-        <li>Dietry Fiber : <%= @nutrition[0]["dietry_fiber"].to_i %></li>
-        <li>Sugar : <%= @nutrition[0]["sugar"].to_i %></li>
-        <li>Protien : <%= @nutrition[0]["protien"].to_i %></li>
-        <li>Cholesterol : <%= @nutrition[0]["cholesterol"].to_i %></li>
-      </ul>
+      <h4 class="mx-4">Nutritional Values</h4>
+      <div class="nutrition-value d-flex p-2 mx-5">
+        <ul class="list-group rounded-4 pt-3" style="list-style: none;">
+          <li style="color: black;"><strong>Calories:</strong> <%= @nutrition[0]["calories"].to_i %></li>
+          <li><strong>Total Fat:</strong> <%= @nutrition[0]["total_fat"].to_i %> g</li>
+          <li><strong>Saturated Fat:</strong> <%= @nutrition[0]["saturated_fat"].to_i %> g</li>
+          <li><strong>sodium:</strong> <%= @nutrition[0]["sodium"].to_i %> mg</li>
+          <li><strong>Carbohydrate:</strong> <%= @nutrition[0]["carbs"].to_i %> g</li>
+          <li><strong>Dietry Fiber:</strong> <%= @nutrition[0]["dietry_fiber"].to_i %> g</li>
+          <li><strong>Sugar:</strong> <%= @nutrition[0]["sugar"].to_i %> g</li>
+          <li><strong>Protein:</strong> <%= @nutrition[0]["protien"].to_i %> g</li>
+          <li><strong>Cholesterol:</strong> <%= @nutrition[0]["cholesterol"].to_i %> mg</li>
+        </ul>
+        <div class="container d-flex justify-content-center">
+          <% if !@nutrition.empty? %>
+            <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+            <script>
+                var chrt = document.getElementById("chartId").getContext("2d");
+                var chartId = new Chart(chrt, {
+                  type: 'doughnut',
+                  data: {
+                      labels: ["Total Fat", "Saturated Fat", "Sodium", "Carbohydrate", "Dietry Fiber", "Sugar", "Protein", "Cholesterol"],
+                      datasets: [{
+                      label: "Nutrition",
+                      data: ["<%= @nutrition[0]["total_fat"].to_i %>",
+                              "<%= @nutrition[0]["saturated_fat"].to_i%>",
+                              "<%= @nutrition[0]["sodium"].to_i/1000 %>",
+                              "<%= @nutrition[0]["carbs"].to_i %>",
+                              "<%= @nutrition[0]["dietry_fiber"].to_i %>",
+                              "<%= @nutrition[0]["sugar"].to_i %>",
+                              "<%= @nutrition[0]["protien"].to_i %>",
+                              "<%= @nutrition[0]["cholesterol"].to_i/1000 %>"
+                              ],
+                      backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue','grey','purple','lightbrown'],
+                      hoverOffset: 5
+                      }],
+                  },
+                  options: {
+                      responsive: false,
+                  },
+                });
+            </script>
+          <% end %>
+        </div>
+      </div>
     </div>
     <% end %>
 
@@ -106,35 +140,6 @@
         </div>
       </div>
     </div>
-
-  <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
-   <script>
-      var chrt = document.getElementById("chartId").getContext("2d");
-      var chartId = new Chart(chrt, {
-         type: 'doughnut',
-         data: {
-            labels: ["Total Fat", "Saturated Fat", "sodium", "Carbohydrate", "Dietry Fiber", "Sugar","Protien","Cholesterol"],
-            datasets: [{
-            label: "Nutrition",
-            data: ["<%= @nutrition[0]["total_fat"].to_i %>",
-                    "<%= @nutrition[0]["saturated_fat"].to_i%>",
-                    "<%= @nutrition[0]["sodium"].to_i %>",
-                    "<%= @nutrition[0]["carbs"].to_i %>",
-                    "<%= @nutrition[0]["dietry_fiber"].to_i %>",
-                    "<%= @nutrition[0]["sugar"].to_i %>",
-                    "<%= @nutrition[0]["protien"].to_i %>",
-                    "<%= @nutrition[0]["cholesterol"].to_i %>"
-                    ],
-            backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue','grey','purple','lightbrown'],
-            hoverOffset: 5
-            }],
-         },
-         options: {
-            responsive: false,
-         },
-      });
-   </script>
 
   </div>
 </div>

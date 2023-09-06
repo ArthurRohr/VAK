@@ -88,3 +88,14 @@
 .title {
   font-family: $body-font;
 }
+
+.nutrition-value {
+  ul {
+    width: 30%;
+  }
+
+  li {
+    margin: 0.5rem;
+    color: $text-gray;
+  }
+}
