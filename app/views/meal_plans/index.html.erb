@@ -11,7 +11,7 @@
 
   <div class="container my-4 grid-container">
     <% @meal_plans.each do |meal| %>
-      <%= link_to meal_plan_path(meal) do%>
+      <%= link_to meal_plan_path(meal) do %>
       <div class="card text-bg-dark card-meal rounded-4">
         <% unless meal.picture.key.nil? %>
           <%= cl_image_tag meal.picture.key, crop: :fill %>

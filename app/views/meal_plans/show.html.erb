@@ -1,13 +1,13 @@
-<div class="m-0 p-5 w-100" style="background-color: #f7eddf;">
+<div class="m-0 py-5 pe-5 w-100" style="background-color: #f7eddf;">
 
-  <h1 class="text-center"><%= @meal_plan.name %> Meal Plan</h1>
+  <h1 class="text-center mb-5 title"><%= @meal_plan.name %> Meal Plan</h1>
   <h1><%= @recipe_data %></h1>
   <% counter = 1 %>
   <% daycounter = 1 %>
   <% counter2 = 0 %>
   <% type = '' %>
 
-  <div class="container grid-container-meal card-meal-plan rounded-4">
+  <div class="grid-container-meal">
     <% @meal_plan_recipes.each do |meal_recipe| %>
       <% counter += 1 and counter2 = 0 and daycounter = 1 if counter2 == 3 %>
       <% if daycounter == 1 %>
@@ -18,14 +18,14 @@
         <% type = 'Dinner' %>
       <% end %>
       <% if counter2 < 1 %>
-        <h1 class="d-flex align-items-center">Day <%= counter %></h1>
+        <h1 class="d-flex align-items-center justify-content-center ms-5">Day <%= counter %></h1>
       <% end %>
 
-      <div class="container my-4">
+      <div class="card-meal-plan">
         <div class="card card-container rounded-4">
           <%= cl_image_tag meal_recipe.recipe.picture.key, crop: :fill %>
           <div class="card-body">
-            <h6 class="text-center"><%= type %></h6>
+            <h6 class="text-center mb-4"><%= type %></h6>
             <h5 class="card-title"><%= meal_recipe.recipe.name %></h5>
             <% if meal_recipe.recipe.ai_created %>
               <i class="fa-solid fa-robot p-2 rounded-5 ai-gen" style="color: #84bd00; background-color: #c0dd7d"></i>
