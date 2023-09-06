@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :meal_plans
   has_many :bookmarks
+  has_many :reviews
 
   def has_bookmarked?(recipe)
     bookmarks.where(recipe: recipe).exists?
