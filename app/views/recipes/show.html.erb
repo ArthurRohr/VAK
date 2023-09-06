@@ -119,15 +119,19 @@
           <div class="container p-5 border rounded-4">
             <h4 class="pb-3"><%= @recipe.name %></h4>
             <% if !@reviews.empty? %>
-                <p class="pb-5 border-bottom"><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating.round(1) %></p>
+                <p class="pb-5 border-bottom"><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> Average Rating : <%=avg_rating.round(1) %></p>
                 <ul class="list-group list-group-flush">
                   <% @reviews.each do |review| rating+=review["rating"] %>
                       <li class="list-group-item p-3">
                         <p class="blockquote-footer mt-3"><i><%= review.user.first_name %> <%= review.user.created_at.to_date %></i> </p>
-                        <p>Rating: <%= review["rating"] %></p>
+                        <p>Rating:
+                        <% for i in 1..review["rating"] do %>
+                            <i class="fa-solid fa-star" style="color: #84BD00;"></i>
+                        <% end %></p>
                         <p><%=  review["comment"] %></p>
                       </li>
                   <% end %>
+
               <% else %>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item p-3"><p>Be the first one to review this recipe</p></li>
@@ -140,7 +144,7 @@
           <div class="container forms bg-white rounded-4 p-5" style="width: 100%;">
               <h4 class="pb-3">Add Review</h4>
                 <%= simple_form_for([@recipe,@review]) do |f| %>
-                <%= f.input :rating %>
+                <%= f.input :rating, collection: [1,2,3,4,5] %>
                 <%= f.input :comment%>
                 <%= f.submit "Add a Review", class: "button-form btn-signup" %>
               <% end %>
