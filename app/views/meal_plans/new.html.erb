@@ -1,7 +1,9 @@
-<h1>Generate your plan</h1>
-<%= simple_form_for(@meal_plan) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
-  <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 0 %>
-  <%= f.button :submit %>
-  <% end %>
+<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;">
+  <h1 class="pb-3">Generate your plan</h1>
+  <%= simple_form_for(@meal_plan) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
+    <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 0 %>
+    <%= f.button :submit, class: "button-form btn-signup" %>
+    <% end %>
+</div>
