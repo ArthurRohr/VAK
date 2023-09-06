@@ -32,7 +32,7 @@
       </div>
 
       <div class="counter-card">
-        <h3>Weeks w/ prep-meals</h3>
+        <h3>Meal Plans</h3>
         <div class="frame">
           <i class="fa-regular fa-calendar" style="color: #FDC040; font-size: 2rem;"></i>
           <h4 style="color: #FDC040;"><%= @meal_plan_count %></h4>
@@ -56,19 +56,17 @@
         <%= link_to "See more →",  cookbooks_path %>
       </div>
       <p>Last saves<p>
-      <% @recipes.reverse.take(5).each do |recipe| %>
-        <% if !recipe.ai_created %>
-          <div class="d-flex align-items-center my-3">
-            <%= link_to recipe_path(recipe) do %>
-              <div class="img-recipe-avatar">
-                <%= cl_image_tag recipe.picture.key %>
-              </div>
-            <% end %>
-            <%= link_to recipe_path(recipe) do %>
-              <h5 class="ms-3"><%= recipe.name %></h5>
-            <% end %>
-          </div>
-        <% end %>
+      <% @recipes_created.reverse.take(5).each do |recipe| %>
+        <div class="d-flex align-items-center my-3">
+          <%= link_to recipe_path(recipe) do %>
+            <div class="img-recipe-avatar">
+              <%= cl_image_tag recipe.picture.key %>
+            </div>
+          <% end %>
+          <%= link_to recipe_path(recipe) do %>
+            <h5 class="ms-3"><%= recipe.name %></h5>
+          <% end %>
+        </div>
       <% end %>
     </div>
 

@@ -19,7 +19,7 @@
       </div>
       <div class="icon-container text-center">
         <%= link_to meal_plans_path, class: "nav-link" do %>
-          <i class="fa-regular fa-calendar"><p>Meal Plans</p></i>
+          <i class="fa-regular fa-calendar <%= 'active' if current_page?(meal_plans_path) %>"><p class="<%= 'active' if current_page?(meal_plans_path) %>">Meal Plans</p></i>
         <% end %>
       </div>
       <div class="icon-container text-center">

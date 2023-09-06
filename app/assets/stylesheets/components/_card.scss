@@ -14,11 +14,25 @@
 
   .delete-recipe {
     position: absolute;
-    top: 21rem;
-    right: 1rem;
+    top: 30.5rem;
+    right: 2rem;
     font-size: 1.5rem;
     color: $header-black;
     text-decoration: none;
+    transition: 0.7s ease;
+
+    &:hover {
+      color: $link-orange;
+      transition: 0.7s ease;
+    }
+  }
+
+  .rating {
+    top: 24.5rem;
+    right: 2rem;
+    position: absolute;
+    font-size: 1rem;
+    color: $header-black;
   }
 }
 
