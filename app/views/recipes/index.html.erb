@@ -16,7 +16,7 @@
     <% @recipes.each do |recipe| %>
       <div class="card card-container rounded-4">
         <%= cl_image_tag recipe.picture.key, crop: :fill %>
-        <div class="card-body d-flex align-items-center">
+        <div class="card-body">
           <h5 class="card-title"><%= recipe.name %></h5>
           <% if recipe.ai_created %>
             <i class="fa-solid fa-robot p-2 rounded-5 ai-gen" style="color: #84bd00; background-color: #c0dd7d"></i>
@@ -27,6 +27,14 @@
           <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> <%= recipe.cuisine %></li>
           <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> <%= recipe.diet %></li>
           <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(recipe), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
+          <% if !recipe.reviews.empty? %>
+            <% rating = 0 %>
+            <% recipe.reviews.each do |review| rating+=review["rating"] end %>
+            <div class="rating">
+              <i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i>
+              <span><%= avg_rating = (rating.to_f/recipe.reviews.length).round(1) %></span>
+            </div>
+          <% end %>
         </ul>
       </div>
     <% end %>
