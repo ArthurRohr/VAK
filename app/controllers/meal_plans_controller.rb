@@ -3,15 +3,12 @@ require 'open-uri'
 class MealPlansController < ApplicationController
 
   def index
-    @meal_plans = MealPlan.all
+    @meal_plans = MealPlan.where(user: current_user)
   end
 
   def show
-    # @meal_plan = MealPlan.find(params[:id])
     @meal_plan = MealPlan.find(params[:id])
     @meal_plan_recipes = @meal_plan.meal_plan_recipes
-    #  @meal_plan_recipes.each do |meal_recipe|
-    #   end
   end
 
   def new
@@ -22,7 +19,8 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
     response = ai_meal_plan(@meal_plan)
-    file = URI.open(OpenaiService.new(meal_plan_params[:diet]).getImageUrl)
+    diet = meal_plan_params[:diet] == '' ? "food" : meal_plan_params[:diet]
+    file = URI.open(OpenaiService.new(diet).getImageUrl)
     @meal_plan.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
     if @meal_plan.save
       # recipe-_hash:
@@ -80,32 +78,3 @@ class MealPlansController < ApplicationController
   end
 
 end
-
-  # def get_new_plan_api
-  #   response = HTTParty.get('https://api.spoonacular.com/mealplanner/generate', {
-  #     query: {
-  #       apiKey: ENV['MEAL_PLAN_API_KEY'],
-  #       timeFrame: 'week',
-  #       targetCalories: 2000,
-  #       diet: 'vegetarian',
-  #       exclude: 'shellfish,olives'
-  #     }
-  #   })
-  #   @data = JSON.parse(response.body)
-  #   week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-  #   week.each do |day|
-  #     @data["week"][day].each do |meals|
-  #       meals[1].each do |meal|
-  #         if meal.is_a?Hash
-  #           id = meal["id"]
-  #           recipe_response = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/information",{
-  #             query: {
-  #               apiKey: ENV['MEAL_PLAN_API_KEY'],
-  #               includeNutrition: true
-  #             }
-  #           })
-  #           @recipe_data = JSON.parse(recipe_response.body)
-  #         end
-  #       end
-  #     end
-  #   end
