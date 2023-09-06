@@ -74,21 +74,33 @@
     <!-- review form -->
     <div class="container mt-5">
       <h2 class="mb-3">Reviews</h2>
+
+
+        <% rating = 0 %>
+        <% @reviews.each do |review| rating+=review["rating"] end %>
+        <% avg_rating = rating.to_f/@reviews.length %>
+
       <div class="row">
         <div class="col">
           <ul class="list-group list-group-flush border rounded-4">
             <!-- review -->
             <li class="list-group-item p-5">
-              <p><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> 8.5</p>
-              <p class="blockquote-footer mt-3">Your Name</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum iusto doloremque asperiores voluptatibus, repudiandae quod, doloribus excepturi quam iure quos, cumque expedita ipsum sunt? Obcaecati voluptatum quasi maxime deserunt illum.</p>
-            </li>
+              <p><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating %></p>
+              <% @reviews.each do |review| rating+=review["rating"] %>
+                <p class="blockquote-footer mt-3"><%= review.user.first_name  %></p>
+                <p><%=  review["comment"] %></li>
+              <% end %>
           </ul>
         </div>
         <div class="col">
           <div class="container forms bg-white rounded-4 p-5" style="width: 100%;">
               <h4 class="pb-3">Add Review</h4>
               <!-- add review form -->
+                <%= simple_form_for([@recipe,@review]) do |f| %>
+                <%= f.input :rating %>
+                <%= f.input :comment%>
+                <%= f.submit "Add a Review", class: "button-form btn-signup" %>
+              <% end %>
           </div>
         </div>
       </div>

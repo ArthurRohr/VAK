@@ -11,11 +11,17 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @nutrition = NutritionalValue.where(recipe_id: @recipe)
+
     if current_user.has_bookmarked?(@recipe)
       @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
     end
+
+    @reviews = Review.where(recipe_id: @recipe)
+
+    @review = Review.new
+
   end
-  #create a function to get the new recipe
+  # create a function to get the new recipe
   def new
     @ai = params[:ai]
     @recipe = Recipe.new
