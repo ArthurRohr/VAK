@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
     @recipes = user_recipes
     @meal_plans = user_meal_plans
     @bookmarks = Bookmark.where(user_id: current_user.id)
-    @recipe_count = Recipe.where(user_id: current_user.id).count
+    @recipe_count = Recipe.where(user_id: current_user.id, ai_created: false).count
+    @recipe_ai_count = Recipe.where(user_id: current_user.id, ai_created: true).count
     @meal_plan_count = MealPlan.where(user_id: current_user.id).count
     @bookmarks_count = Bookmark.where(user_id: current_user.id).count
     @user_recipes = current_user.recipes

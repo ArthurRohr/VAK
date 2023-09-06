@@ -70,8 +70,6 @@
     </div>
     <% end %>
 
-
-    <!-- review form -->
     <div class="container mt-5">
       <h2 class="mb-3">Reviews</h2>
 
@@ -81,21 +79,24 @@
         <% avg_rating = rating.to_f/@reviews.length %>
 
       <div class="row">
+        <!-- reviews -->
         <div class="col">
-          <ul class="list-group list-group-flush border rounded-4">
-            <!-- review -->
-            <li class="list-group-item p-5">
-              <p><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating %></p>
+          <div class="container p-5 border rounded-4">
+            <h4 class="pb-3"><%= @recipe.name %></h4>
+            <p class="pb-5 border-bottom"><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating %></p>
+            <ul class="list-group list-group-flush">
               <% @reviews.each do |review| rating+=review["rating"] %>
-                <p class="blockquote-footer mt-3"><%= review.user.first_name  %></p>
-                <p><%=  review["comment"] %></li>
+                <li class="list-group-item p-3">
+                  <p class="blockquote-footer mt-3"><%= review.user.first_name  %></p>
+                  <p><%=  review["comment"] %></p></li>
               <% end %>
-          </ul>
+            </ul>
+          </div>
         </div>
+
         <div class="col">
           <div class="container forms bg-white rounded-4 p-5" style="width: 100%;">
               <h4 class="pb-3">Add Review</h4>
-              <!-- add review form -->
                 <%= simple_form_for([@recipe,@review]) do |f| %>
                 <%= f.input :rating %>
                 <%= f.input :comment%>
@@ -106,7 +107,6 @@
       </div>
     </div>
 
-
   <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
    <script>
@@ -114,11 +114,10 @@
       var chartId = new Chart(chrt, {
          type: 'doughnut',
          data: {
-            labels: ["Calories", "Total Fat", "Saturated Fat", "sodium", "Carbohydrate", "Dietry Fiber", "Sugar","Protien","Cholesterol"],
+            labels: ["Total Fat", "Saturated Fat", "sodium", "Carbohydrate", "Dietry Fiber", "Sugar","Protien","Cholesterol"],
             datasets: [{
             label: "Nutrition",
-            data: ["<%= @nutrition[0]["calories"].to_i %>",
-                    "<%= @nutrition[0]["total_fat"].to_i %>",
+            data: ["<%= @nutrition[0]["total_fat"].to_i %>",
                     "<%= @nutrition[0]["saturated_fat"].to_i%>",
                     "<%= @nutrition[0]["sodium"].to_i %>",
                     "<%= @nutrition[0]["carbs"].to_i %>",
