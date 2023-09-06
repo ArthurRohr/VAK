@@ -70,9 +70,9 @@
     </div>
     <% end %>
 
-
     <div class="container mt-5">
       <h2 class="mb-3">Reviews</h2>
+
 
         <% rating = 0 %>
         <% @reviews.each do |review| rating+=review["rating"] end %>
@@ -93,7 +93,7 @@
             </ul>
           </div>
         </div>
-        <!-- review form -->
+
         <div class="col">
           <div class="container forms bg-white rounded-4 p-5" style="width: 100%;">
               <h4 class="pb-3">Add Review</h4>
@@ -104,10 +104,37 @@
               <% end %>
           </div>
         </div>
-
       </div>
     </div>
 
+  <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+   <script>
+      var chrt = document.getElementById("chartId").getContext("2d");
+      var chartId = new Chart(chrt, {
+         type: 'doughnut',
+         data: {
+            labels: ["Total Fat", "Saturated Fat", "sodium", "Carbohydrate", "Dietry Fiber", "Sugar","Protien","Cholesterol"],
+            datasets: [{
+            label: "Nutrition",
+            data: ["<%= @nutrition[0]["total_fat"].to_i %>",
+                    "<%= @nutrition[0]["saturated_fat"].to_i%>",
+                    "<%= @nutrition[0]["sodium"].to_i %>",
+                    "<%= @nutrition[0]["carbs"].to_i %>",
+                    "<%= @nutrition[0]["dietry_fiber"].to_i %>",
+                    "<%= @nutrition[0]["sugar"].to_i %>",
+                    "<%= @nutrition[0]["protien"].to_i %>",
+                    "<%= @nutrition[0]["cholesterol"].to_i %>"
+                    ],
+            backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue','grey','purple','lightbrown'],
+            hoverOffset: 5
+            }],
+         },
+         options: {
+            responsive: false,
+         },
+      });
+   </script>
 
   </div>
 </div>
