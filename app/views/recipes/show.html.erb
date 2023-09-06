@@ -104,25 +104,33 @@
     </div>
     <% end %>
 
+
+
+    <!-- reviews -->
     <div class="container mt-5">
       <h2 class="mb-3">Reviews</h2>
 
-
-        <% rating = 0 %>
-        <% @reviews.each do |review| rating+=review["rating"] end %>
-        <% avg_rating = rating.to_f/@reviews.length %>
+      <% rating = 0 %>
+      <% @reviews.each do |review| rating+=review["rating"] end %>
+      <% avg_rating = rating.to_f/@reviews.length %>
 
       <div class="row">
-        <!-- reviews -->
         <div class="col">
           <div class="container p-5 border rounded-4">
             <h4 class="pb-3"><%= @recipe.name %></h4>
-            <p class="pb-5 border-bottom"><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating %></p>
-            <ul class="list-group list-group-flush">
-              <% @reviews.each do |review| rating+=review["rating"] %>
-                <li class="list-group-item p-3">
-                  <p class="blockquote-footer mt-3"><%= review.user.first_name  %></p>
-                  <p><%=  review["comment"] %></p></li>
+            <% if !@reviews.empty? %>
+                <p class="pb-5 border-bottom"><i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i> <%=avg_rating.round(1) %></p>
+                <ul class="list-group list-group-flush">
+                  <% @reviews.each do |review| rating+=review["rating"] %>
+                      <li class="list-group-item p-3">
+                        <p class="blockquote-footer mt-3"><i><%= review.user.first_name %> <%= review.user.created_at.to_date %></i> </p>
+                        <p>Rating: <%= review["rating"] %></p>
+                        <p><%=  review["comment"] %></p>
+                      </li>
+                  <% end %>
+              <% else %>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-3"><p>Be the first one to review this recipe</p></li>
               <% end %>
             </ul>
           </div>
