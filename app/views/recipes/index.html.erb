@@ -14,6 +14,18 @@
 
   <div class="container my-4 grid-container">
     <% @recipes.each do |recipe| %>
+
+
+    <% if recipe.cuisine.empty?
+        recipe.cuisine = "International"
+    end %>
+    <% if recipe.diet.empty?
+        recipe.diet = "All-inclusive"
+    end %>
+    <% if recipe.servings.nil?
+        recipe.servings = 2
+      end %>
+
       <div class="card card-container rounded-4">
         <%= cl_image_tag recipe.picture.key, crop: :fill %>
         <div class="card-body">

@@ -6,9 +6,9 @@
     <%= f.input :instructions%>
     <%= f.label :time, 'Time in minutes' %>
     <%= f.input :time, as: :string, label: false %>
-    <%= f.input :cuisine%>
-    <%= f.input :diet%>
-    <%= f.input :servings%>
+    <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, selected: 'italian' %>
+    <%= f.input :diet, as: :select, collection: Recipe::DIET, selected: 'vegeterian'%>
+
     <%= f.input :picture, as: :file %>
     <%= f.submit "Submit", class: "button-form btn-signup" %>
   <% end %>

@@ -8,6 +8,17 @@
       <h1 class="pt-5"><%= @recipe.name %></h1>
     </div>
 
+
+    <% if @recipe.cuisine.empty?
+        @recipe.cuisine = "International"
+    end %>
+    <% if @recipe.diet.empty?
+        @recipe.diet = "All-inclusive"
+    end %>
+    <% if @recipe.servings.nil?
+        @recipe.servings = 2
+      end %>
+
     <div class="container pt-3">
       <ul class="list-inline rounded-4 pt-3">
         <li class="list-inline-item pe-3"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> Time:  <%= @recipe.time %></li>
@@ -71,7 +82,6 @@
         <div class="container d-flex justify-content-center">
           <% if !@nutrition.empty? %>
             <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
             <script>
                 var chrt = document.getElementById("chartId").getContext("2d");
                 var chartId = new Chart(chrt, {
