@@ -1,25 +1,39 @@
-<div class="container my-3">
-  <div class="container my-4 grid-container">
-      <% @user_recipes.each do |cookbook| %>
-      <% unless cookbook.ai_created %>
-        <div class="card card-container rounded-4">
-          <%= cl_image_tag cookbook.picture.key, crop: :fill %>
-          <div class="card-body">
-            <h5 class="card-title"><%= cookbook.name %></h5>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> <%= cookbook.time %> minutes</li>
-            <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> <%= cookbook.cuisine %></li>
-            <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> <%= cookbook.diet %></li>
-            <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(cookbook), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
-            <%= link_to "",
-              recipe_path(cookbook),
-              data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},
-              class: "fa-solid fa-trash-can ms-3 delete-recipe"
-            %>
-          </ul>
-        </div>
+<% if @user_recipes.exists? %>
+  <div class="container my-3">
+    <div class="container my-4 grid-container">
+        <% @user_recipes.each do |cookbook| %>
+          <% unless cookbook.ai_created %>
+            <div class="card card-container rounded-4">
+              <%= cl_image_tag cookbook.picture.key, crop: :fill %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= cookbook.name %></h5>
+                </div>
+              <ul class="list-group">
+                <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i> <%= cookbook.time %> minutes</li>
+                <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i> <%= cookbook.cuisine %></li>
+                <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i> <%= cookbook.diet %></li>
+                <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(cookbook), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
+                <%= link_to "",
+                  recipe_path(cookbook),
+                  data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                  class: "fa-solid fa-trash-can ms-3 delete-recipe"
+                %>
+              </ul>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
   </div>
+<% else %>
+      <div class=" container d-flex justify-content-center align-items-center">
+        <div class="container d-flex justify-content-center">
+          <div class="card card-container rounded-4 w-50 text-center">
+            <div class="card-body">
+              <h5 class="card-title">You don't have any recipes yet!</h5>
+                <p class="card-text">Click on the button below to add your first recipe.</p>
+                <%= link_to "Add a recipe", new_recipe_path, class: "btn-signup" %>
+            </div>
+          </div>
+        </div>
+    </div>
+<% end %>
