@@ -1,21 +1,49 @@
-<div class="container my-3">
-  <div class="container my-4 grid-container">
-    <% @bookmarks.each do |bookmark| %>
-      <div class="card card-container rounded-4">
-        <%= cl_image_tag bookmark.recipe.picture.key, crop: :fill %>
-        <div class="card-body">
-          <h5 class="card-title"><%= bookmark.recipe.name %></h5>
-          <% if bookmark.recipe.ai_created %>
-            <i class="fa-solid fa-robot p-2 rounded-5 ai-gen" style="color: #84bd00; background-color: #c0dd7d"></i>
-          <% end %>
+<% if @bookmarks.exists? %>
+  <div class="container my-3">
+    <div class="container my-4 grid-container">
+      <% @bookmarks.each do |bookmark| %>
+        <div class="card card-container rounded-4">
+          <%= cl_image_tag bookmark.recipe.picture.key, crop: :fill %>
+          <div class="card-body">
+            <h5 class="card-title"><%= bookmark.recipe.name %></h5>
+            <% if bookmark.recipe.ai_created %>
+              <i class="fa-solid fa-robot p-2 rounded-5 ai-gen" style="color: #84bd00; background-color: #c0dd7d"></i>
+            <% end %>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i>  <%= bookmark.recipe.time %> minutes</li>
+            <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i>  <%= bookmark.recipe.cuisine %></li>
+            <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i>  <%= bookmark.recipe.diet %></li>
+            <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(bookmark.recipe), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
+            <% if !bookmark.recipe.reviews.empty? %>
+              <% rating = 0 %>
+              <% bookmark.recipe.reviews.each do |review| rating+=review["rating"] end %>
+                <div class="rating">
+                  <i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i>
+                  <span><%= avg_rating = (rating.to_f/bookmark.recipe.reviews.length).round(1) %></span>
+                </div>
+              <% else %>
+                <div class="rating">
+                  <i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i>
+                  <span>-</span>
+                </div>
+            <% end %>
+          </ul>
         </div>
-        <ul class="list-group">
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-clock p-2 rounded-5" style="color: #f6784c; background-color: #fcd6c9;"></i>  <%= bookmark.recipe.time %> minutes</li>
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-utensils p-2 rounded-5" style="color: #ed8b00; background-color: #f6c47d;"></i>  <%= bookmark.recipe.cuisine %></li>
-          <li class="list-group-item recipe-detail"><i class="fa-solid fa-apple-whole p-2 rounded-5" style="color: #eaaa00; background-color: #f8e5b2;"></i>  <%= bookmark.recipe.diet %></li>
-          <li class="list-group-item recipe-detail m-2 d-flex justify-content-center"><%= link_to "Details", recipe_path(bookmark.recipe), class: "btn-signup", style:"width: 100%; text-align: center;" %></li>
-        </ul>
+      <% end %>
+    </div>
+
+  <% else %>
+    <div class=" container d-flex justify-content-center align-items-center">
+      <div class="container d-flex justify-content-center">
+        <div class="card card-container rounded-4 w-50 text-center">
+          <div class="card-body">
+            <h5 class="card-title">You don't have any Bookmarks yet!</h5>
+            <p class="card-text">Click on the button below to browse through existing Recipes.</p>
+            <%= link_to "Browse", recipes_path, class: "btn-signup" %>
+          </div>
+        </div>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+
+<% end %>

@@ -9,19 +9,28 @@
     </div>
   </div>
 
+
   <div class="container my-4 grid-container">
     <% @meal_plans.each do |meal| %>
-      <%= link_to meal_plan_path(meal) do %>
-      <div class="card text-bg-dark card-meal rounded-4">
-        <% unless meal.picture.key.nil? %>
-          <%= cl_image_tag meal.picture.key, crop: :fill %>
-        <% end %>
-        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-          <h5><%= meal.name %></h5>
+        <div class="card text-bg-dark card-meal rounded-4">
+          <%= link_to "", meal_plan_path(meal), class: "link-wrapper" %>
+          <% unless meal.picture.key.nil? %>
+            <%= cl_image_tag meal.picture.key, crop: :fill %>
+          <% end %>
+          <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <%= link_to "",
+              meal_plan_path(meal),
+              method: "delete",
+              data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},
+              class: "fa-solid fa-xmark ms-3 delete-recipe link-btn",
+              style: "color: white; text-decoration: none;"
+            %>
+            <h5><%= meal.name %></h5>
+          </div>
         </div>
-      </div>
-      <% end %>
     <% end %>
   </div>
 
 </div>
+
+<i class="fa-solid fa-xmark"></i>
