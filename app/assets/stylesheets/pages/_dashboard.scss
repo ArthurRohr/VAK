@@ -87,6 +87,7 @@
     width: 4rem;
     border-radius: 50%;
     overflow: hidden; /* Ensure the image is clipped within the rounded div */
+    transition: 0.7s ease;
 
     img {
       width: 100%;
@@ -102,6 +103,8 @@
 
     &:hover {
       box-shadow: 0 0 8px $link-orange;
+      transform: scale(1.1);
+      transition: 0.7s ease;
     }
   }
 
