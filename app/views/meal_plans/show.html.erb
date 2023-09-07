@@ -39,12 +39,12 @@
             <% if !meal_recipe.recipe.reviews.empty? %>
               <% rating = 0 %>
               <% meal_recipe.recipe.reviews.each do |review| rating+=review["rating"] end %>
-              <div class="rating-meal">
+              <div class="rating">
                 <i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i>
                 <span><%= avg_rating = (rating.to_f/meal_recipe.recipe.reviews.length).round(1) %></span>
               </div>
             <% else %>
-              <div class="rating-meal">
+              <div class="rating">
                 <i class="fa-solid fa-star p-2 rounded-5" style="color: #84bd00; background-color: #c0dd7d"></i>
                 <span>-</span>
               </div>
