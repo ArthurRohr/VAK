@@ -23,8 +23,8 @@
           <% end %>
         </div>
       </div>
-
     </div>
+
 
     <div class="container pt-3">
       <ul class="list-inline rounded-4 pt-3">
@@ -34,7 +34,6 @@
         <li class="list-inline-item pe-3"><i class="fa-solid fa-user-group p-2 rounded-5" style="color: #c4d600; background-color: #edf2b2"></i> Servings: <%= @servings %></li>
       </ul>
     </div>
-
 
 
     <div class="container">
@@ -58,47 +57,87 @@
       </div>
     </div>
 
+
     <div class="container bg-white rounded-4 mt-3 p-5">
-      <h4 class="pb-3">Nutritional Values</h4>
-      <% @nutrition["calories"] = 0 if @nutrition["calories"].empty? %>
-      <p>Calories : <%= @nutrition["calories"] %></p>
+      <div class="row">
 
-      <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].empty? %>
-      <p>Total Fat : <%= @nutrition["total_fat"] %></p>
+        <!-- chart -->
+        <div class="col justify-content-center">
+                <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
 
-      <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].empty? %>
-      <p>Saturated Fat : <%= @nutrition["saturated_fat"] %></p>
+                <script>
+                    var chrt = document.getElementById("chartId").getContext("2d");
+                    var chartId = new Chart(chrt, {
+                      type: 'doughnut',
+                      data: {
+                          labels: ["Total Fat", "Saturated Fat", "Sodium", "Carbohydrate", "Dietry Fiber", "Sugar", "Protein", "Cholesterol"],
+                          datasets: [{
+                          label: "Nutrition",
+                          data: ["<%= @nutrition["total_fat"].to_i %>",
+                                  "<%= @nutrition["saturated_fat"].to_i%>",
+                                  "<%= @nutrition["sodium"].to_i/1000 %>",
+                                  "<%= @nutrition["carbs"].to_i %>",
+                                  "<%= @nutrition["dietry_fiber"].to_i %>",
+                                  "<%= @nutrition["sugar"].to_i %>",
+                                  "<%= @nutrition["protien"].to_i %>",
+                                  "<%= @nutrition["cholesterol"].to_i/1000 %>"
+                                  ],
+                          backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue','grey','purple','lightbrown'],
+                          hoverOffset: 5
+                          }],
+                      },
+                      options: {
+                          responsive: false,
+                      },
+                    });
+                </script>
+        </div>
 
-      <% @nutrition["carbs"] = 0 if @nutrition["carbs"].empty? %>
-      <p>Carbohydrate : <%= @nutrition["carbs"] %></p>
+        <!-- nutritional values -->
+        <div class="col">
+          <h4 class="pb-3">Nutritional Values</h4>
+          <% @nutrition["calories"] = 0 if @nutrition["calories"].empty? %>
+          <p><strong>Calories:</strong> <%= @nutrition["calories"] %></p>
 
-      <% @nutrition["protein"] = 0 if @nutrition["protein"].empty? %>
-      <p>Protien : <%= @nutrition["protein"] %></p>
+          <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].empty? %>
+          <p style="color: gray;"><strong>Total Fat:</strong> <%= @nutrition["total_fat"] %></p>
 
-      <% @nutrition["sodium"] = 0 if @nutrition["sodium"].empty? %>
-      <p>Sodium : <%= @nutrition["sodium"] %></p>
+          <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].empty? %>
+          <p style="color: gray;"><strong>Saturated Fat:</strong> <%= @nutrition["saturated_fat"] %></p>
 
-      <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].empty? %>
-      <p>Fiber : <%= @nutrition["dietary_fiber"] %></p>
+          <% @nutrition["carbs"] = 0 if @nutrition["carbs"].empty? %>
+          <p style="color: gray;"><strong>Carbohydrate :</strong> <%= @nutrition["carbs"] %></p>
 
-      <% @nutrition["sugar"] = 0 if @nutrition["sugar"].empty? %>
-      <p>Sugar: <%= @nutrition["sugar"] %></p>
+          <% @nutrition["protein"] = 0 if @nutrition["protein"].empty? %>
+          <p style="color: gray;"><strong>Protein :</strong> <%= @nutrition["protein"] %></p>
 
-      <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].empty? %>
-      <p>Cholestrol : <%=  @nutrition["cholesterol"] %></p>
+          <% @nutrition["sodium"] = 0 if @nutrition["sodium"].empty? %>
+          <p style="color: gray;"><strong>sodium:</strong> <%= @nutrition["sodium"] %></p>
 
-      <% @nutrition = {
-                        :calories=> @nutrition["calories"],
-                        :total_fat=> @nutrition["total_fat"],
-                        :saturated_fat=> @nutrition["saturated_fat"],
-                        :sodium=> @nutrition["sodium"],
-                        :carbs=> @nutrition["carbs"],
-                        :dietary_fiber=> @nutrition["dietary_fiber"],
-                        :sugar=> @nutrition["sugar"],
-                        :protein=> @nutrition["protein"],
-                        :cholesterol=> @nutrition["cholesterol"]
-                      }
-        %>
+          <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].empty? %>
+          <p style="color: gray;"><strong>Fiber :</strong> <%= @nutrition["dietary_fiber"] %></p>
+
+          <% @nutrition["sugar"] = 0 if @nutrition["sugar"].empty? %>
+          <p style="color: gray;"><strong>Sugar:</strong> <%= @nutrition["sugar"] %></p>
+
+          <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].empty? %>
+          <p style="color: gray;"><strong>Cholestrol :</strong> <%=  @nutrition["cholesterol"] %></p>
+
+          <% @nutrition = {
+                            :calories=> @nutrition["calories"],
+                            :total_fat=> @nutrition["total_fat"],
+                            :saturated_fat=> @nutrition["saturated_fat"],
+                            :sodium=> @nutrition["sodium"],
+                            :carbs=> @nutrition["carbs"],
+                            :dietary_fiber=> @nutrition["dietary_fiber"],
+                            :sugar=> @nutrition["sugar"],
+                            :protein=> @nutrition["protein"],
+                            :cholesterol=> @nutrition["cholesterol"]
+                          }
+            %>
+        </div>
+
+      </div>
     </div>
 
 
