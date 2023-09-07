@@ -15,11 +15,19 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new
   end
 
+  def destroy
+    @meal_plan = MealPlan.find(params[:id])
+    @meal_plan.destroy
+    redirect_to meal_plans_path
+  end
+
+
   def create
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
     response = ai_meal_plan(@meal_plan)
-    diet = meal_plan_params[:diet] == '' ? "food" : meal_plan_params[:diet]
+    onlyfood = "only pictures of food"
+    diet = meal_plan_params[:diet] == '' ? "food" : meal_plan_params[:diet, onlyfood]
     file = URI.open(OpenaiService.new(diet).getImageUrl)
     @meal_plan.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
     if @meal_plan.save
