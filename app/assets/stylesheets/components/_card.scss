@@ -14,7 +14,7 @@
 
   .delete-recipe {
     position: absolute;
-    top: 30.5rem;
+    bottom: 5.5rem;
     right: 2rem;
     font-size: 1.5rem;
     color: $header-black;
@@ -28,15 +28,7 @@
   }
 
   .rating {
-    top: 24.5rem;
-    right: 2rem;
-    position: absolute;
-    font-size: 1rem;
-    color: $header-black;
-  }
-
-  .rating-meal {
-    top: 27.75rem;
+    bottom: 11.25rem;
     right: 2rem;
     position: absolute;
     font-size: 1rem;
