@@ -26,8 +26,7 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new(meal_plan_params)
     @meal_plan.user = current_user
     response = ai_meal_plan(@meal_plan)
-    onlyfood = "only pictures of food"
-    diet = meal_plan_params[:diet] == '' ? "food" : meal_plan_params[:diet, onlyfood]
+    diet = meal_plan_params[:diet] == '' ? "food" : meal_plan_params[:diet]
     file = URI.open(OpenaiService.new(diet).getImageUrl)
     @meal_plan.picture.attach(io: file, filename: "recipe.png", content_type: "image/png")
     if @meal_plan.save
