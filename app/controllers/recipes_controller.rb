@@ -93,8 +93,8 @@ class RecipesController < ApplicationController
     @cooking_time = @response["recipe"]["cooking_time"]
     @servings = @response["recipe"]["servings"]
     @nutrition = @response["recipe"]["nutrition"]
+    onlyfood = "only pictures of food"
     @imgUrl = getImage(@title)
-
   end
 
   #create a function to edit the recipe

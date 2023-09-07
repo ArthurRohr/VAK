@@ -8,7 +8,10 @@
   <% type = '' %>
 
   <div class="grid-container-meal">
+
+
     <% @meal_plan_recipes.each do |meal_recipe| %>
+
       <% counter += 1 and counter2 = 0 and daycounter = 1 if counter2 == 3 %>
       <% if daycounter == 1 %>
         <% type = 'Breakfast' %>

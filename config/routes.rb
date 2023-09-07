@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       resources :reviews, only: [:new, :create, :destroy]
   end
 
+
   resources :meal_plans, except: [:edit, :update] do
-    resources :meal_plan_recipes, only: :create
+    resources :meal_plan_recipes, only: [:create, :destroy]
   end
 
   resources :bookmarks, only: [:destroy, :index]
