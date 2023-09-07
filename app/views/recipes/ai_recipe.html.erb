@@ -64,7 +64,7 @@
     </div>
 
 
-    <div class="container bg-white rounded-4 mt-3 p-5">
+    <div class="container bg-white rounded-4 my-4 p-5">
       <div class="row">
 
         <!-- chart -->
@@ -147,7 +147,7 @@
     </div>
 
 
-
-  <%= link_to "Generate_another", ai_recipe_path({"recipes"=>{"ingredients"=>@ingredients, "time"=>@time, "cuisine"=> @cuisine, "diet"=>@diet}, "commit"=>"Submit"}) %>
+  <p>Are you unhappy with this recipe?</p>
+  <%= link_to "Generate another", ai_recipe_path({"recipes"=>{"ingredients"=>@ingredients, "time"=>@time, "cuisine"=> @cuisine, "diet"=>@diet}, "commit"=>"Submit"}), class: "btn-signup" %>
   </div>
 </div>
