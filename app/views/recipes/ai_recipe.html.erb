@@ -102,31 +102,31 @@
         <!-- nutritional values -->
         <div class="col">
           <h4 class="pb-3">Nutritional Values</h4>
-          <% @nutrition["calories"] = 0 if @nutrition["calories"].empty? %>
+          <% @nutrition["calories"] = 0 if @nutrition["calories"].nil? %>
           <p><strong>Calories:</strong> <%= @nutrition["calories"] %></p>
 
-          <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].empty? %>
+          <% @nutrition["total_fat"]= 0 if @nutrition["total_fat"].nil? %>
           <p style="color: gray;"><strong>Total Fat:</strong> <%= @nutrition["total_fat"] %></p>
 
-          <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].empty? %>
+          <% @nutrition["saturated_fat"] = 0 if @nutrition["saturated_fat"].nil? %>
           <p style="color: gray;"><strong>Saturated Fat:</strong> <%= @nutrition["saturated_fat"] %></p>
 
-          <% @nutrition["carbs"] = 0 if @nutrition["carbs"].empty? %>
+          <% @nutrition["carbs"] = 0 if @nutrition["carbs"].nil? %>
           <p style="color: gray;"><strong>Carbohydrate :</strong> <%= @nutrition["carbs"] %></p>
 
-          <% @nutrition["protein"] = 0 if @nutrition["protein"].empty? %>
+          <% @nutrition["protein"] = 0 if @nutrition["protein"].nil? %>
           <p style="color: gray;"><strong>Protein :</strong> <%= @nutrition["protein"] %></p>
 
-          <% @nutrition["sodium"] = 0 if @nutrition["sodium"].empty? %>
+          <% @nutrition["sodium"] = 0 if @nutrition["sodium"].nil? %>
           <p style="color: gray;"><strong>sodium:</strong> <%= @nutrition["sodium"] %></p>
 
-          <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].empty? %>
+          <% @nutrition["dietary_fiber"] = 0 if @nutrition["dietary_fiber"].nil? %>
           <p style="color: gray;"><strong>Fiber :</strong> <%= @nutrition["dietary_fiber"] %></p>
 
-          <% @nutrition["sugar"] = 0 if @nutrition["sugar"].empty? %>
+          <% @nutrition["sugar"] = 0 if @nutrition["sugar"].nil? %>
           <p style="color: gray;"><strong>Sugar:</strong> <%= @nutrition["sugar"] %></p>
 
-          <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].empty? %>
+          <% @nutrition["cholesterol"] = 0 if  @nutrition["cholesterol"].nil? %>
           <p style="color: gray;"><strong>Cholestrol :</strong> <%=  @nutrition["cholesterol"] %></p>
 
           <% @nutrition = {
