@@ -23,7 +23,9 @@
               method: "delete",
               data:{turbo_method: :delete, turbo_confirm: "Are you sure?"},
               class: "fa-solid fa-xmark ms-3 delete-recipe link-btn",
-              style: "color: white; text-decoration: none;"
+              style: "color: white; text-decoration: none; font-size: 1.5rem;",
+              onmouseover: "this.style.color = '#ED8B00';",
+              onmouseout: "this.style.color = 'white';"
             %>
             <h5><%= meal.name %></h5>
           </div>
@@ -32,5 +34,3 @@
   </div>
 
 </div>
-
-<i class="fa-solid fa-xmark"></i>
