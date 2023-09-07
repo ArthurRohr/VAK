@@ -1,10 +1,14 @@
-<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;">
+<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;" data-controller="loader">
   <h2 class="pb-3">Generate Recipe</h2>
   <%= simple_form_for :recipes, url:  ai_recipe_path, method: :get do |f| %>
     <%= f.input :ingredients %>
     <%= f.input :time, as: :select, collection: Recipe::TIME, selected: "15 mins" %>
     <%= f.input :cuisine, as: :select, collection: Recipe::CUISINE, prompt: 'Any' %>
     <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
-    <%= f.submit "Submit", class: "btn-signup" %>
+    <%= f.submit "Submit", data: { loader_target: "submit" }, "data-action" => "click->loader#loading", class: "btn-signup" %>
   <% end %>
+  <button class="btn-signup d-none" type="button" disabled data-loader-target="loader">
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status">Generating your recipe...</span>
+  </button>
 </div>

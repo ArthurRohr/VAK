@@ -1,9 +1,13 @@
-<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;">
+<div class="container my-5 forms bg-white rounded-4 p-5" style="width: 60%;", data-controller="loader">
   <h1 class="pb-3">Generate your plan</h1>
   <%= simple_form_for(@meal_plan) do |f| %>
     <%= f.input :name %>
     <%= f.input :diet, as: :select, collection: Recipe::DIET, prompt: 'No Diet Restrictions'%>
     <%= f.input :days, as: :select, collection: MealPlan::DAYS, prompt: 0 %>
-    <%= f.button :submit, class: "button-form btn-signup" %>
-    <% end %>
+    <%= f.button :submit, data: { loader_target: "submit" }, "data-action" => "click->loader#loading", class: "button-form btn-signup" %>
+  <% end %>
+  <button class="btn-signup d-none" type="button" disabled data-loader-target="loader">
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status">Generating your meal plan...</span>
+  </button>
 </div>
