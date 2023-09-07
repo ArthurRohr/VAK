@@ -146,8 +146,14 @@
       </div>
     </div>
 
+    <div class="container" data-controller="loader">
+      <p>Are you unhappy with this recipe?</p>
+      <%= link_to "Generate another", ai_recipe_path({"recipes"=>{"ingredients"=>@ingredients, "time"=>@time, "cuisine"=> @cuisine, "diet"=>@diet}, "commit"=>"Submit"}), class: "btn-signup", data: { loader_target: "submit" }, "data-action" => "click->loader#loading" %>
+      <button class="btn-signup d-none" type="button" disabled data-loader-target="loader">
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Generating your recipe...</span>
+      </button>
+    </div>
 
-  <p>Are you unhappy with this recipe?</p>
-  <%= link_to "Generate another", ai_recipe_path({"recipes"=>{"ingredients"=>@ingredients, "time"=>@time, "cuisine"=> @cuisine, "diet"=>@diet}, "commit"=>"Submit"}), class: "btn-signup" %>
   </div>
 </div>
