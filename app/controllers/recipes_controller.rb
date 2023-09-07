@@ -9,9 +9,9 @@ class RecipesController < ApplicationController
   end
   #create a function to show the recipe
   def show
+
     @recipe = Recipe.find(params[:id])
     @nutrition = NutritionalValue.where(recipe_id: @recipe)
-
     if current_user.has_bookmarked?(@recipe)
       @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
     end
@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
     @ai = params[:ai]
     @recipe = Recipe.new
   end
+
   #create a function to create the recipe
   def create
     @recipe = Recipe.new(recipe_params)
@@ -63,6 +64,7 @@ class RecipesController < ApplicationController
   end
   #create a function to get the ai recipe
   def ai_recipe
+
     @ingredients = params["recipes"]["ingredients"]
     @time = params["recipes"]["time"]
     @cuisine = params["recipes"]["cuisine"]
