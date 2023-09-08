@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :users, through: :bookmarks
   has_many :meal_plans, through: :meal_plan_recipes
-  has_one :nutritional_value
+  has_one :nutritional_value, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   has_one_attached :picture
